@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.recipesonline;
 
 import android.content.Context;
 
