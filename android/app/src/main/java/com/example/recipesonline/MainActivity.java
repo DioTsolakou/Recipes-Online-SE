@@ -1,4 +1,4 @@
-package main.java.com.example.recipesonline;
+package com.example.recipesonline;
 
 import androidx.appcompat.app.AppCompatActivity;
 

@@ -1,4 +1,4 @@
-package main.java.com.example.recipesonline;
+package com.example.recipesonline;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +15,8 @@ public class Recipe {
 
     public Recipe(){}
 
-    public Recipe(RegisteredUser user, String name, List<RecipeIngredient> ingredients, String description){
+    public Recipe(RegisteredUser user, String name, List<RecipeIngredient> ingredients, String description)
+    {
         this.user = user;
         this.name = name;
         this.description = description;
@@ -23,40 +24,82 @@ public class Recipe {
         evaluationList = new ArrayList<Evaluation>();
     }
 
-    public Recipe(RegisteredUser user, String name, List<RecipeIngredient> ingredients, String description, String id){
+    public Recipe(RegisteredUser user, String name, List<RecipeIngredient> ingredients, String description, String id)
+    {
         this(user, name, ingredients, description);
         this.id = id;
     }
 
-    public String getName() {return name;}
-    public void setName(String name) {this.name = name;}
+    public String getName()
+    {
+        return name;
 
-    public String getDescription() {return description;}
-    public void setDescription(String description) {this.description = description;}
+    }
+    public void setName(String name)
+    {
+        this.name = name;
+    }
 
-    public String getId() {return id;}
-    public void setId(String id) {this.id = id; }
+    public String getDescription()
+    {
+        return description;
+    }
 
-    public List<RecipeIngredient> getIngredients() {return ingredients;}
-    public void setIngredients(List<RecipeIngredient> ingredients) {this.ingredients = ingredients;}
+    public void setDescription(String description)
+    {
+        this.description = description;
+    }
 
-    public List<Evaluation> getEvaluationList() {return evaluationList;}
-    public void setEvaluationList(List<Evaluation> evaluationList) {this.evaluationList = evaluationList; }
+    public String getId()
+    {
+        return id;
+    }
 
-    public void addIngredient(RecipeIngredient ri){ingredients.add(ri);}
+    public void setId(String id)
+    {
+        this.id = id;
+    }
 
-    public void addEvaluation(Evaluation e){evaluationList.add(e);}
 
-    public double calcEvaluation(){
+    public List<RecipeIngredient> getIngredients()
+    {
+        return ingredients;
+    }
+
+    public void setIngredients(List<RecipeIngredient> ingredients)
+    {
+        this.ingredients = ingredients;
+    }
+
+    public List<Evaluation> getEvaluationList()
+    {
+        return evaluationList;
+    }
+
+    public void setEvaluationList(List<Evaluation> evaluationList)
+    {
+        this.evaluationList = evaluationList;
+    }
+
+    public void addIngredient(RecipeIngredient ri)
+    {
+        ingredients.add(ri);
+    }
+
+    public void addEvaluation(Evaluation e)
+    {
+        evaluationList.add(e);
+    }
+
+    public double calcEvaluation()
+    {
         //...
         return -1;
     }
 
-    public int calcCalories(){
+    public int calcCalories()
+    {
         //...
         return -1;
     }
-
-
-
 }

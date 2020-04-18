@@ -1,4 +1,4 @@
-package main.java.com.example.recipesonline;
+package com.example.recipesonline;
 
 public class Evaluation {
 
@@ -13,15 +13,32 @@ public class Evaluation {
         this.rating = rating;
     }
 
-    public int getId() {return id;}
-    public void setId(int id) {this.id = id;}
+    public int getId()
+    {
+        return id;
+    }
 
-    public String getComments() {return comments;}
-    public void setComments(String comments) {this.comments = comments;}
+    public void setId(int id)
+    {
+        this.id = id;
+    }
 
-    public int getRating() {return rating;}
-    public void setRating(int rating) {this.rating = rating;}
+    public String getComments()
+    {
+        return comments;
+    }
+    public void setComments(String comments)
+    {
+        this.comments = comments;
+    }
 
+    public int getRating()
+    {
+        return rating;
 
-
+    }
+    public void setRating(int rating)
+    {
+        this.rating = rating;
+    }
 }

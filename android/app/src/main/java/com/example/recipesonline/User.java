@@ -1,4 +1,4 @@
-package main.java.com.example.recipesonline;
+package com.example.recipesonline;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,5 +25,4 @@ public class User {
         }
         return result;
     }*/
-
 }

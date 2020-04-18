@@ -1,4 +1,4 @@
-package main.java.com.example.recipesonline;
+package com.example.recipesonline;
 
 public class Ingredient {
 
@@ -10,10 +10,22 @@ public class Ingredient {
         this.calories = calories;
     }
 
-    public String getName() {return name;}
-    public void setName(String name) {this.name = name;}
+    public String getName()
+    {
+        return name;
+    }
 
-    public int getCalories() {return calories; }
-    public void setCalories(int calories) {this.calories = calories;}
+    public void setName(String name)
+    {
+        this.name = name;
+    }
 
+    public int getCalories()
+    {
+        return calories;
+    }
+    public void setCalories(int calories)
+    {
+        this.calories = calories;
+    }
 }

@@ -1,4 +1,4 @@
-package main.java.com.example.recipesonline;
+package com.example.recipesonline;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +9,15 @@ public class RegisteredUser extends User {
     private String username;
     private String password;
 
-    public void createRecipe(){
+    public RegisteredUser(String name, String username, String password)
+    {
+        this.name = name;
+        this.username = username;
+        this.password = password;
+    }
+
+    public void createRecipe()
+    {
         String name = "";
         List<RecipeIngredient> ingredients= new ArrayList<RecipeIngredient>();
         String description = "";
@@ -18,7 +26,8 @@ public class RegisteredUser extends User {
         MainActivity.Recipes.add(new Recipe(this, name, ingredients, description));
     }
 
-    public int calcCalories(String recipeName){
+    public int calcCalories(String recipeName)
+    {
         for (Recipe r: MainActivity.Recipes){
             if (r.getName().equals(recipeName)){
                 return r.calcCalories();
@@ -27,7 +36,8 @@ public class RegisteredUser extends User {
         return -1;
     }
 
-    public void evaluate(String recipeName){
+    public void evaluate(String recipeName)
+    {
         for (Recipe r: MainActivity.Recipes){
             if (r.getName().equals(recipeName)){
                 String comments = "";
@@ -37,5 +47,4 @@ public class RegisteredUser extends User {
             }
         }
     }
-
 }
