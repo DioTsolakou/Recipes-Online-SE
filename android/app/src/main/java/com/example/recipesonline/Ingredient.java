@@ -5,6 +5,12 @@ public class Ingredient {
     private String name;
     private int calories;
 
+    public Ingredient(String name)
+    {
+        this.name = name;
+        this.calories = 0;
+    }
+
     public Ingredient(String name, int calories) {
         this.name = name;
         this.calories = calories;
@@ -24,6 +30,7 @@ public class Ingredient {
     {
         return calories;
     }
+
     public void setCalories(int calories)
     {
         this.calories = calories;

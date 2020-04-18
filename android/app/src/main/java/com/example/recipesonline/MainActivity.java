@@ -5,11 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
 
 public class MainActivity extends AppCompatActivity {
 
     static ArrayList<Recipe> Recipes = new ArrayList<Recipe>();
+    static HashSet<Ingredient> Ingredients = new HashSet<Ingredient>();
 
     public static void main(String[] args){
     }

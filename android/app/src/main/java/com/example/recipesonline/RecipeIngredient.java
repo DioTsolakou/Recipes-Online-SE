@@ -6,9 +6,24 @@ public class RecipeIngredient {
     double amount;
     String metricUnit;
 
-    public RecipeIngredient(Ingredient ingredient, double amount, String metricUnit)
+    public RecipeIngredient(String ingredientName, double amount, String metricUnit)
     {
-        this.ingredient = ingredient;
+        for (Ingredient ingredient : MainActivity.Ingredients)
+        {
+            if (ingredientName.equals(ingredient.getName()))
+            {
+                this.ingredient = ingredient;
+                break;
+            }
+        }
+
+        if (ingredient == null)
+        {
+            Ingredient ingredient = new Ingredient(ingredientName);
+            MainActivity.Ingredients.add(ingredient);
+            this.ingredient = ingredient;
+        }
+
         this.amount = amount;
         this.metricUnit = metricUnit;
     }
