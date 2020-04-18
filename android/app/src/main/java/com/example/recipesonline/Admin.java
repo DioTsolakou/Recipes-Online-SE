@@ -54,7 +54,7 @@ public class Admin extends User
 
         for (Ingredient ingredient : MainActivity.Ingredients)
         {
-            if (ingredientName.equals(ingredient.getName()))
+            if (ingredientName.equalsIgnoreCase(ingredient.getName()))
             {
                 System.out.println("Enter the name of the ingredient : ");
                 ingredient.setName(in.nextLine());

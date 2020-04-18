@@ -56,23 +56,39 @@ public class RegisteredUser extends User {
         MainActivity.Recipes.add(new Recipe(this, name, recipeIngredients, description));
     }
 
-    public int calcCalories(String recipeName)
+    public int calcRecipeCalories()
     {
+        Scanner in = new Scanner(System.in);
+        System.out.println("Enter the recipe which calories' you would like to calculate : ");
+        String recipeName = in.nextLine();
+
         for (Recipe r: MainActivity.Recipes){
-            if (r.getName().equals(recipeName)){
+            if (r.getName().equalsIgnoreCase(recipeName)){
                 return r.calcCalories();
             }
         }
         return -1;
     }
 
-    public void evaluate(String recipeName)
+    public void evaluate()
     {
+        Scanner in = new Scanner(System.in);
+
+        System.out.println("Enter the name of the recipe you would like to evaluate : ");
+        String recipeName = in.nextLine();
+
         for (Recipe r : MainActivity.Recipes){
-            if (r.getName().equals(recipeName)){
-                String comments = "";
-                int rating = 0;
+            if (r.getName().equalsIgnoreCase(recipeName)){
+                String comments;
+                int rating;
+
                 //read input from user
+                System.out.println("Insert the comments you would like to leave : ");
+                comments = in.nextLine();
+
+                System.out.println("Insert the rating for this recipe : ");
+                rating = Integer.parseInt(in.nextLine());
+
                 r.addEvaluation(new Evaluation(this, comments, rating));
             }
         }

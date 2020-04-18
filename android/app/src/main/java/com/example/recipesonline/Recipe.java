@@ -93,13 +93,23 @@ public class Recipe {
 
     public double calcEvaluation()
     {
-        //...
-        return -1;
+        double totalRatings = 0.0;
+        for (Evaluation evaluation : evaluationList)
+        {
+            totalRatings += evaluation.getRating();
+        }
+
+        return totalRatings / (double) evaluationList.size();
     }
 
     public int calcCalories()
     {
-        //...
-        return -1;
+        int totalCalories = 0;
+        for (RecipeIngredient recipeIngredient : ingredients)
+        {
+            totalCalories += (recipeIngredient.getIngredient().getCalories()) * (recipeIngredient.getAmount() / 100.0);
+        }
+
+        return totalCalories;
     }
 }

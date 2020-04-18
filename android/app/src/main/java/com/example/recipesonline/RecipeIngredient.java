@@ -10,7 +10,7 @@ public class RecipeIngredient {
     {
         for (Ingredient ingredient : MainActivity.Ingredients)
         {
-            if (ingredientName.equals(ingredient.getName()))
+            if (ingredientName.equalsIgnoreCase(ingredient.getName()))
             {
                 this.ingredient = ingredient;
                 break;

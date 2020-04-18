@@ -8,7 +8,7 @@ public class User {
     protected List<Recipe> search(String name){
         List<Recipe> result = new ArrayList<>();
         for (Recipe r: MainActivity.Recipes){
-            if (r.getName().equals(name)) result.add(r);
+            if (r.getName().equalsIgnoreCase(name)) result.add(r);
         }
         return result;
     }
