@@ -2,8 +2,70 @@ package com.example.recipesonline;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class User {
+
+    public User(){}
+
+    public void registerUser(){
+        Scanner in = new Scanner(System.in);
+
+        System.out.println("Give your name: ");
+        String name = in.nextLine();
+
+        System.out.println("Give your username: ");
+        String username = in.nextLine();
+
+        String password1, password2;
+        do {
+            System.out.println("Give your password: ");
+            password1 = in.nextLine();
+
+            System.out.println("Confirm your password: ");
+            password2 = in.nextLine();
+        } while(!password1.equals(password2));
+
+        MainActivity.RegisteredUsers.add(new RegisteredUser(name, username, password1));
+    }
+
+    public void login(){
+        Scanner in = new Scanner(System.in);
+
+        System.out.println("Give the username: ");
+        String username = in.nextLine();
+
+        System.out.println("Give the password: ");
+        String password = in.nextLine();
+
+        for (Admin a: MainActivity.Admins){
+            if(a.getUsername().equals(username) && a.getPassword().equals(password)) {
+                System.out.println("You are logged in as " + username);
+                MainActivity.LoggedInAdmins.add(a);
+                return;
+            }
+        }
+
+        for(RegisteredUser ru: MainActivity.RegisteredUsers){
+            if(ru.getUsername().equals(username) && ru.getPassword().equals(password)) {
+                System.out.println("You are logged in as " + username);
+                MainActivity.LoggedInRegisteredUsers.add(ru);
+                return;
+            }
+        }
+    }
+
+    public void logout() {
+        Scanner in = new Scanner(System.in);
+
+        System.out.println("Do you want to logout? (yes/no)");
+        String ans = in.nextLine();
+
+        if(ans.equalsIgnoreCase("yes"))
+            logoutUser();
+    }
+
+    protected void logoutUser(){}
 
     protected List<Recipe> search(String name){
         List<Recipe> result = new ArrayList<>();
@@ -13,16 +75,16 @@ public class User {
         return result;
     }
 
-    /*protected List<Recipe> searchByType(String name){
+    protected List<Recipe> searchByType(String typeName){
         List<Recipe> result = new ArrayList<>();
-        for (Recipe r: Recipes){
-            for (Type t: r.getTypes()){
-                if (t.getName().equals(name)){
+        for (Recipe r: MainActivity.Recipes){
+            for (String t: r.getTypes()){
+                if (t.equalsIgnoreCase(typeName)){
                     result.add(r);
                     break;
                 }
             }
         }
         return result;
-    }*/
+    }
 }

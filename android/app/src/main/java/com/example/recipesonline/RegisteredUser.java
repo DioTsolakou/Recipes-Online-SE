@@ -17,6 +17,35 @@ public class RegisteredUser extends User {
         this.password = password;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    @Override
+    public void logoutUser(){
+        MainActivity.LoggedInRegisteredUsers.remove(this);
+    }
+
     public void createRecipe()
     {
         Scanner in = new Scanner(System.in);
@@ -52,8 +81,16 @@ public class RegisteredUser extends User {
         System.out.println("Give the description of the recipe : ");
         description = in.nextLine();
 
-        //add name, ingredients, description
-        MainActivity.Recipes.add(new Recipe(this, name, recipeIngredients, description));
+        System.out.println("Give the types of the recipe");
+        System.out.println("Type exit if you are done.");
+        List<String> types = new ArrayList<String>();
+        while(true) {
+            String type = in.nextLine();
+            if(type.equalsIgnoreCase("exit")) break;
+            types.add(type);
+        }
+
+        MainActivity.Recipes.add(new Recipe(this, name, recipeIngredients, description, types));
     }
 
     public int calcRecipeCalories()

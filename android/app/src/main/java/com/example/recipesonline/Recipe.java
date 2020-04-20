@@ -8,33 +8,27 @@ public class Recipe {
     private RegisteredUser user;
     private String name;
     private String description;
-    private String id;
     private List<RecipeIngredient> ingredients;
     private List<Evaluation> evaluationList;
-    //private List<Type> types;
+    private List<String> types;
 
     public Recipe(){}
 
-    public Recipe(RegisteredUser user, String name, List<RecipeIngredient> ingredients, String description)
+    public Recipe(RegisteredUser user, String name, List<RecipeIngredient> ingredients, String description, List<String> types)
     {
         this.user = user;
         this.name = name;
         this.description = description;
         this.ingredients = ingredients;
         evaluationList = new ArrayList<Evaluation>();
-    }
-
-    public Recipe(RegisteredUser user, String name, List<RecipeIngredient> ingredients, String description, String id)
-    {
-        this(user, name, ingredients, description);
-        this.id = id;
+        this.types = types;
     }
 
     public String getName()
     {
         return name;
-
     }
+
     public void setName(String name)
     {
         this.name = name;
@@ -49,17 +43,6 @@ public class Recipe {
     {
         this.description = description;
     }
-
-    public String getId()
-    {
-        return id;
-    }
-
-    public void setId(String id)
-    {
-        this.id = id;
-    }
-
 
     public List<RecipeIngredient> getIngredients()
     {
@@ -79,6 +62,10 @@ public class Recipe {
     public void setEvaluationList(List<Evaluation> evaluationList)
     {
         this.evaluationList = evaluationList;
+    }
+
+    public List<String> getTypes() {
+        return types;
     }
 
     public void addIngredient(RecipeIngredient ri)
