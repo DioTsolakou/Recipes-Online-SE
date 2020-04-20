@@ -45,25 +45,9 @@ public class Admin extends User
         this.password = password;
     }
 
-    public void registerAdmin(){
-        Scanner in = new Scanner(System.in);
-
-        System.out.println("Give your name: ");
-        String name = in.nextLine();
-
-        System.out.println("Give your username: ");
-        String username = in.nextLine();
-
-        String password1, password2;
-        do {
-            System.out.println("Give your password: ");
-            password1 = in.nextLine();
-
-            System.out.println("Confirm your password: ");
-            password2 = in.nextLine();
-        } while(!password1.equals(password2));
-
-        MainActivity.Admins.add(new Admin(name, username, password1));
+    @Override
+    public void registerUser(String name, String username, String password){
+        MainActivity.Admins.add(new Admin(name, username, password));
     }
 
     @Override

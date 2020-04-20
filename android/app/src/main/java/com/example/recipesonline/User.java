@@ -8,7 +8,7 @@ public class User {
 
     public User(){}
 
-    public void registerUser(){
+    public void register(){
         Scanner in = new Scanner(System.in);
 
         System.out.println("Give your name: ");
@@ -26,7 +26,11 @@ public class User {
             password2 = in.nextLine();
         } while(!password1.equals(password2));
 
-        MainActivity.RegisteredUsers.add(new RegisteredUser(name, username, password1));
+        registerUser(name, username, password1);
+    }
+
+    public void registerUser(String name, String username, String password){
+        MainActivity.RegisteredUsers.add(new RegisteredUser(name, username, password));
     }
 
     public void login(){
@@ -38,7 +42,7 @@ public class User {
         System.out.println("Give the password: ");
         String password = in.nextLine();
 
-        for (Admin a: MainActivity.Admins){
+        for(Admin a: MainActivity.Admins){
             if(a.getUsername().equals(username) && a.getPassword().equals(password)) {
                 System.out.println("You are logged in as " + username);
                 MainActivity.LoggedInAdmins.add(a);
