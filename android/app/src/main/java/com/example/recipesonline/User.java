@@ -33,7 +33,7 @@ public class User {
         MainActivity.RegisteredUsers.add(new RegisteredUser(name, username, password));
     }
 
-    public void login(){
+    public User login(){
         Scanner in = new Scanner(System.in);
 
         System.out.println("Give the username: ");
@@ -46,7 +46,7 @@ public class User {
             if(a.getUsername().equals(username) && a.getPassword().equals(password)) {
                 System.out.println("You are logged in as " + username);
                 MainActivity.LoggedInAdmins.add(a);
-                return;
+                return a;
             }
         }
 
@@ -54,20 +54,21 @@ public class User {
             if(ru.getUsername().equals(username) && ru.getPassword().equals(password)) {
                 System.out.println("You are logged in as " + username);
                 MainActivity.LoggedInRegisteredUsers.add(ru);
-                return;
+                return ru;
             }
         }
 
         System.out.println("Wrong credentials!");
+        return null;
 
     }
 
-    public void login2(String username, String password){
+    public User login2(String username, String password){
         for(Admin a: MainActivity.Admins){
             if(a.getUsername().equals(username) && a.getPassword().equals(password)) {
                 System.out.println("You are logged in as " + username);
                 MainActivity.LoggedInAdmins.add(a);
-                return;
+                return a ;
             }
         }
 
@@ -75,11 +76,12 @@ public class User {
             if(ru.getUsername().equals(username) && ru.getPassword().equals(password)) {
                 System.out.println("You are logged in as " + username);
                 MainActivity.LoggedInRegisteredUsers.add(ru);
-                return;
+                return ru ;
             }
         }
 
         System.out.println("Wrong credentials!");
+        return null;
     }
 
     public void logout() {
@@ -94,7 +96,9 @@ public class User {
 
     protected void logoutUser(){}
 
-    protected List<Recipe> search(String name){
+    protected List<Recipe> search(){
+        Scanner in = new Scanner(System.in);
+        String name = in.nextLine();
         List<Recipe> result = new ArrayList<>();
         for (Recipe r: MainActivity.Recipes){
             if (r.getName().equalsIgnoreCase(name)) result.add(r);
@@ -102,7 +106,9 @@ public class User {
         return result;
     }
 
-    protected List<Recipe> searchByType(String typeName){
+    protected List<Recipe> searchByType(){
+        Scanner in = new Scanner(System.in);
+        String typeName = in.nextLine();
         List<Recipe> result = new ArrayList<>();
         for (Recipe r: MainActivity.Recipes){
             for (String t: r.getTypes()){

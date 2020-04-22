@@ -33,9 +33,9 @@ public class UserUnitTest
         User newUser = new User();
         newUser.registerUser("test", "test", "test");
 
-        newUser.login2("test", "test");
+        RegisteredUser ru = (RegisteredUser) newUser.login2("test", "test");
 
-        MainActivity.LoggedInRegisteredUsers.get(0).logoutUser();
+        ru.logoutUser();
 
         Assert.assertEquals(0, MainActivity.LoggedInRegisteredUsers.size());
     }

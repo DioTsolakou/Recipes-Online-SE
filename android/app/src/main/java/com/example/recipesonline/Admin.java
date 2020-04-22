@@ -55,7 +55,7 @@ public class Admin extends User
         MainActivity.LoggedInAdmins.remove(this);
     }
 
-    private void updateIngredient()
+    public void updateIngredient()
     {
         Scanner in = new Scanner(System.in);
 
