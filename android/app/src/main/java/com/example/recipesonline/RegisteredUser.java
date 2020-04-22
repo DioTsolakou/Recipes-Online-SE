@@ -44,6 +44,8 @@ public class RegisteredUser extends User {
     @Override
     public void logoutUser(){
         MainActivity.LoggedInRegisteredUsers.remove(this);
+
+        System.out.println("You have been logged out.");
     }
 
     public void createRecipe()
@@ -93,7 +95,7 @@ public class RegisteredUser extends User {
         MainActivity.Recipes.add(new Recipe(this, name, recipeIngredients, description, types));
     }
 
-    public int calcRecipeCalories()
+    public double calcRecipeCalories()
     {
         Scanner in = new Scanner(System.in);
         System.out.println("Enter the recipe which calories' you would like to calculate : ");

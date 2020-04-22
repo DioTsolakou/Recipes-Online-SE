@@ -89,9 +89,9 @@ public class Recipe {
         return totalRatings / (double) evaluationList.size();
     }
 
-    public int calcCalories()
+    public double calcCalories()
     {
-        int totalCalories = 0;
+        double totalCalories = 0;
         for (RecipeIngredient recipeIngredient : ingredients)
         {
             totalCalories += (recipeIngredient.getIngredient().getCalories()) * (recipeIngredient.getAmount() / 100.0);

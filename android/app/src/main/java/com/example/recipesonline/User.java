@@ -62,6 +62,26 @@ public class User {
 
     }
 
+    public void login2(String username, String password){
+        for(Admin a: MainActivity.Admins){
+            if(a.getUsername().equals(username) && a.getPassword().equals(password)) {
+                System.out.println("You are logged in as " + username);
+                MainActivity.LoggedInAdmins.add(a);
+                return;
+            }
+        }
+
+        for(RegisteredUser ru: MainActivity.RegisteredUsers){
+            if(ru.getUsername().equals(username) && ru.getPassword().equals(password)) {
+                System.out.println("You are logged in as " + username);
+                MainActivity.LoggedInRegisteredUsers.add(ru);
+                return;
+            }
+        }
+
+        System.out.println("Wrong credentials!");
+    }
+
     public void logout() {
         Scanner in = new Scanner(System.in);
 
