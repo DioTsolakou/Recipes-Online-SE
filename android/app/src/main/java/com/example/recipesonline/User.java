@@ -57,6 +57,9 @@ public class User {
                 return;
             }
         }
+
+        System.out.println("Wrong credentials!");
+
     }
 
     public void logout() {
