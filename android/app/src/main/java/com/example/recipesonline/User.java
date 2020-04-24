@@ -2,21 +2,23 @@ package com.example.recipesonline;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class User {
 
     public User(){}
 
-    public void register(String name, String username, String password1, String password2 ){
+    public void register(String name, String username, String password1, String password2 )
+    {
         if(password1.equals(password2)) registerUser(name, username, password1);
     }
 
-    public void registerUser(String name, String username, String password){
+    public void registerUser(String name, String username, String password)
+    {
         MainActivity.RegisteredUsers.add(new RegisteredUser(name, username, password));
     }
 
-    public User login(String username, String password){
+    public User login(String username, String password)
+    {
         for(Admin a: MainActivity.Admins){
             if(a.getUsername().equals(username) && a.getPassword().equals(password)) {
                 System.out.println("You are logged in as " + username);
@@ -37,14 +39,16 @@ public class User {
         return null;
     }
 
-    public void logout(String ans) {
+    public void logout(String ans)
+    {
         if(ans.equalsIgnoreCase("yes"))
             logoutUser();
     }
 
     protected void logoutUser(){}
 
-    protected List<Recipe> search(String name){
+    protected List<Recipe> search(String name)
+    {
         List<Recipe> result = new ArrayList<>();
         for (Recipe r: MainActivity.Recipes){
             if (r.getName().equalsIgnoreCase(name)) result.add(r);
@@ -52,7 +56,8 @@ public class User {
         return result;
     }
 
-    protected List<Recipe> searchByType(String typeName){
+    protected List<Recipe> searchByType(String typeName)
+    {
         List<Recipe> result = new ArrayList<>();
         for (Recipe r: MainActivity.Recipes){
             for (String t: r.getTypes()){

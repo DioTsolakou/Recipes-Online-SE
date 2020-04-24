@@ -1,7 +1,5 @@
 package com.example.recipesonline;
 
-import java.util.Scanner;
-
 public class Admin extends User
 {
     private String name;

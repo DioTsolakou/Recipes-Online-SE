@@ -13,9 +13,7 @@ public class UserUnitTest
     RegisteredUser rUser;
     Admin newAdmin = new Admin("test", "test", "test");
     Recipe recipe;
-    static int i=0;
-
-
+    static int i = 0;
 
     @Before
     public void createRecipeTest(){
@@ -46,6 +44,7 @@ public class UserUnitTest
         recipe = new Recipe(rUser, "name", test, "desc", types);
         rUser.createRecipe( "name", test, "desc", types);
     }
+
     @Test
     public void registerTest()
     {
@@ -82,6 +81,7 @@ public class UserUnitTest
     {
         Assert.assertEquals(1.25, recipe.calcCalories(), 0.0);
     }
+
     @Test
     public  void evaluateTest(){
         rUser.evaluate("name", "test", 5);

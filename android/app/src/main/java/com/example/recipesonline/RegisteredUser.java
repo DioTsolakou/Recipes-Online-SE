@@ -1,8 +1,6 @@
 package com.example.recipesonline;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class RegisteredUser extends User {
 
