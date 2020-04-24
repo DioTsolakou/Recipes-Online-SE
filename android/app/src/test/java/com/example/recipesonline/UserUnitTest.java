@@ -8,11 +8,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserUnitTest {
-    User u = new User();
-    RegisteredUser ru;
-    Admin a = new Admin("adminName", "adminUsername", "adminPswd");
-    Recipe recipe;
-    static int i = 0;
+
+    private User u = new User();
+    private RegisteredUser ru;
+    private Admin a = new Admin("adminName", "adminUsername", "adminPswd");
+    private Recipe recipe;
+    private static int i = 0;
 
     @Before
     public void createRecipeTest() {
