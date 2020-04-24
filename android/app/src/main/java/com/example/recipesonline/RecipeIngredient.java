@@ -6,19 +6,15 @@ public class RecipeIngredient {
     double amount;
     String metricUnit;
 
-    public RecipeIngredient(String ingredientName, double amount, String metricUnit)
-    {
-        for (Ingredient ingredient : MainActivity.Ingredients)
-        {
-            if (ingredientName.equalsIgnoreCase(ingredient.getName()))
-            {
+    public RecipeIngredient(String ingredientName, double amount, String metricUnit) {
+        for (Ingredient ingredient : MainActivity.Ingredients) {
+            if (ingredientName.equalsIgnoreCase(ingredient.getName())) {
                 this.ingredient = ingredient;
                 break;
             }
         }
 
-        if (ingredient == null)
-        {
+        if (ingredient == null) {
             Ingredient ingredient = new Ingredient(ingredientName);
             MainActivity.Ingredients.add(ingredient);
             this.ingredient = ingredient;
@@ -28,33 +24,12 @@ public class RecipeIngredient {
         this.metricUnit = metricUnit;
     }
 
-    public Ingredient getIngredient()
-    {
-        return ingredient;
-    }
+    public Ingredient getIngredient() {return ingredient;}
+    public double getAmount() {return amount;}
+    public String getMetricUnit() {return metricUnit;}
 
-    public void setIngredient(Ingredient ingredient)
-    {
-        this.ingredient = ingredient;
-    }
+    public void setIngredient(Ingredient ingredient) {this.ingredient = ingredient;}
+    public void setAmount(double amount) {this.amount = amount;}
+    public void setMetricUnit(String metricUnit) {this.metricUnit = metricUnit;}
 
-    public double getAmount()
-    {
-        return amount;
-    }
-
-    public void setAmount(double amount)
-    {
-        this.amount = amount;
-    }
-
-    public String getMetricUnit()
-    {
-        return metricUnit;
-    }
-
-    public void setMetricUnit(String metricUnit)
-    {
-        this.metricUnit = metricUnit;
-    }
 }

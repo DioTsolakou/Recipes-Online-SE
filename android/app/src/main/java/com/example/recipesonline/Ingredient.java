@@ -5,8 +5,7 @@ public class Ingredient {
     private String name;
     private int calories;
 
-    public Ingredient(String name)
-    {
+    public Ingredient(String name) {
         this.name = name;
         this.calories = 0;
     }
@@ -16,23 +15,10 @@ public class Ingredient {
         this.calories = calories;
     }
 
-    public String getName()
-    {
-        return name;
-    }
+    public String getName() {return name;}
+    public int getCalories() {return calories;}
 
-    public void setName(String name)
-    {
-        this.name = name;
-    }
+    public void setName(String name) {this.name = name;}
+    public void setCalories(int calories) {this.calories = calories;}
 
-    public int getCalories()
-    {
-        return calories;
-    }
-
-    public void setCalories(int calories)
-    {
-        this.calories = calories;
-    }
 }

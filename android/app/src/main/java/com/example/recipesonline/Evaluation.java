@@ -13,32 +13,14 @@ public class Evaluation {
         this.rating = rating;
     }
 
-    public int getId()
-    {
-        return id;
-    }
+    public int getId() {return id;}
+    public RegisteredUser getUser() {return user;}
+    public String getComments() {return comments;}
+    public int getRating() {return rating;}
 
-    public void setId(int id)
-    {
-        this.id = id;
-    }
+    public void setId(int id) {this.id = id;}
+    public void setUser(RegisteredUser user) {this.user = user;}
+    public void setComments(String comments) {this.comments = comments;}
+    public void setRating(int rating) {this.rating = rating;}
 
-    public String getComments()
-    {
-        return comments;
-    }
-    public void setComments(String comments)
-    {
-        this.comments = comments;
-    }
-
-    public int getRating()
-    {
-        return rating;
-    }
-
-    public void setRating(int rating)
-    {
-        this.rating = rating;
-    }
 }

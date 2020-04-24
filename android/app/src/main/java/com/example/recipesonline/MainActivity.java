@@ -18,11 +18,9 @@ public class MainActivity extends AppCompatActivity {
     static ArrayList<Admin> LoggedInAdmins = new ArrayList<>();
 
     public static void main(String[] args) {
-
         Admins.add(new Admin("Dio Collaku", "admin1", "1234"));
         Admins.add(new Admin("Chara Gjergji", "admin2", "1234"));
         Admins.add(new Admin("Christos Argyropoulos", "admin3", "1234"));
-
     }
 
     @Override
