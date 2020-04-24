@@ -1,6 +1,7 @@
 package com.example.recipesonline;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -8,62 +9,48 @@ import java.util.List;
 
 public class UserUnitTest
 {
+    User newUser = new User();
+    RegisteredUser registeredUser = new RegisteredUser("test", "test", "test");
+    Admin newAdmin = new Admin("test", "test", "test");
+
     @Test
     public void registerTest()
     {
-        User newUser = new User();
-        newUser.registerUser("test", "test", "test");
+        newUser.register("test", "test", "test", "test");
         Assert.assertEquals(1, MainActivity.RegisteredUsers.size());
     }
 
     @Test
     public void loginTest()
     {
-        User newUser = new User();
-        newUser.registerUser("test", "test", "test");
-
-        newUser.login2("test", "test");
-
+        newUser.register("test", "test", "test", "test");
+        RegisteredUser rUser = (RegisteredUser)newUser.login("test", "test");
         Assert.assertEquals(1, MainActivity.LoggedInRegisteredUsers.size());
     }
 
     @Test
     public void logoutTest()
     {
-        User newUser = new User();
-        newUser.registerUser("test", "test", "test");
-
-        RegisteredUser ru = (RegisteredUser) newUser.login2("test", "test");
-
+        newUser.register("test", "test", "test", "test");
+        RegisteredUser ru = (RegisteredUser) newUser.login("test", "test");
         ru.logoutUser();
-
         Assert.assertEquals(0, MainActivity.LoggedInRegisteredUsers.size());
     }
 
     @Test
-    public void registerAdminTest()
-    {
-        Admin newAdmin = new Admin("test", "test", "test");
+    public void registerAdminTest() {
+
         MainActivity.Admins.add(newAdmin);
-
-        newAdmin.registerUser("test1", "test1", "test1");
-
+        newAdmin.register("test1", "test1", "test1", "test1");
         Assert.assertEquals(2, MainActivity.Admins.size());
     }
 
-    @Test
-    public void searchTest()
-    {
-        User newUser = new User();
-        newUser.registerUser("test", "test", "test");
+    @Before
+    public void createRecipe(){
+        newUser.register("test", "test", "test", "test");
 
-        newUser.login2("test", "test");
+        RegisteredUser rUser = (RegisteredUser)newUser.login("test", "test");
 
-    }
-
-    @Test
-    public void calcCaloriesTest()
-    {
         Ingredient ingredient = new Ingredient("ingr", 100);
         Ingredient ingredient1 = new Ingredient("ingr1", 25);
 
@@ -83,6 +70,16 @@ public class UserUnitTest
         types.add(type1);
         types.add(type2);
 
+
+        Recipe recipe = new Recipe(registeredUser, "name", test, "desc", types);
+    }
+    @Test
+    public void searchTest() {
+    }
+
+    @Test
+    public void calcCaloriesTest()
+    {
         RegisteredUser registeredUser = new RegisteredUser("test", "test", "test");
 
         Recipe recipe = new Recipe(registeredUser, "name", test, "desc", types);

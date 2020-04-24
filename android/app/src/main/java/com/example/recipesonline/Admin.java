@@ -53,26 +53,19 @@ public class Admin extends User
     @Override
     public void logoutUser(){
         MainActivity.LoggedInAdmins.remove(this);
+        System.out.println("You have been logged out.");
     }
 
-    public void updateIngredient()
+    public void updateIngredient(String ingredientName, String correctName, int calories)
     {
-        Scanner in = new Scanner(System.in);
-
-        System.out.println("Enter the name of the ingredient you would like to update : ");
-        String ingredientName = in.nextLine();
-
         for (Ingredient ingredient : MainActivity.Ingredients)
         {
             if (ingredientName.equalsIgnoreCase(ingredient.getName()))
             {
-                System.out.println("Enter the name of the ingredient : ");
-                ingredient.setName(in.nextLine());
+                ingredient.setName(correctName);
+                ingredient.setCalories(calories);
 
-                System.out.println("Enter the calories of the ingredient : ");
-                ingredient.setCalories(Integer.parseInt(in.nextLine()));
-
-                break;
+                return;
             }
         }
     }
