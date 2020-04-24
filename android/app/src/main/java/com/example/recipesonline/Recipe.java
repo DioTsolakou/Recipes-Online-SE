@@ -9,7 +9,7 @@ public class Recipe {
     private String name;
     private String description;
     private List<RecipeIngredient> ingredients;
-    private List<Evaluation> evaluationList;
+    private ArrayList<Evaluation> evaluationList;
     private List<String> types;
 
     public Recipe(){}
@@ -54,12 +54,12 @@ public class Recipe {
         this.ingredients = ingredients;
     }
 
-    public List<Evaluation> getEvaluationList()
+    public ArrayList<Evaluation> getEvaluationList()
     {
         return evaluationList;
     }
 
-    public void setEvaluationList(List<Evaluation> evaluationList)
+    public void setEvaluationList(ArrayList<Evaluation> evaluationList)
     {
         this.evaluationList = evaluationList;
     }

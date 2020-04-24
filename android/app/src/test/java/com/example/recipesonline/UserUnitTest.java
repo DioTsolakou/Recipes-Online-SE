@@ -13,13 +13,16 @@ public class UserUnitTest
     RegisteredUser rUser;
     Admin newAdmin = new Admin("test", "test", "test");
     Recipe recipe;
+    static int i=0;
 
 
 
     @Before
     public void createRecipeTest(){
+
         newUser.register("test", "test", "test", "test");
         rUser = (RegisteredUser)newUser.login("test", "test");
+        i++;
 
         Ingredient ingredient = new Ingredient("ingr", 100);
         Ingredient ingredient1 = new Ingredient("ingr1", 25);
@@ -40,26 +43,26 @@ public class UserUnitTest
         types.add(type1);
         types.add(type2);
 
-
         recipe = new Recipe(rUser, "name", test, "desc", types);
+        rUser.createRecipe( "name", test, "desc", types);
     }
     @Test
     public void registerTest()
     {
-        Assert.assertEquals(1, MainActivity.RegisteredUsers.size());
+            Assert.assertEquals(i, MainActivity.RegisteredUsers.size());
     }
 
     @Test
     public void loginTest()
     {
-        Assert.assertEquals(1, MainActivity.LoggedInRegisteredUsers.size());
+        Assert.assertEquals(i, MainActivity.LoggedInRegisteredUsers.size());
     }
 
     @Test
     public void logoutTest()
     {
         rUser.logoutUser();
-        Assert.assertEquals(0, MainActivity.LoggedInRegisteredUsers.size());
+        Assert.assertEquals(i-1, MainActivity.LoggedInRegisteredUsers.size());
     }
 
     @Test
@@ -71,12 +74,17 @@ public class UserUnitTest
 
     @Test
     public void searchTest() {
-
+        Assert.assertEquals(i, rUser.search("name").size());
     }
 
     @Test
     public void calcCaloriesTest()
     {
         Assert.assertEquals(1.25, recipe.calcCalories(), 0.0);
+    }
+    @Test
+    public  void evaluateTest(){
+        rUser.evaluate("name", "test", 5);
+        Assert.assertEquals(1, recipe.getEvaluationList().size());
     }
 }

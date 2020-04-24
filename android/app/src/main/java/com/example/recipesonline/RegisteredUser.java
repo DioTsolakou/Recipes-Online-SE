@@ -68,6 +68,7 @@ public class RegisteredUser extends User {
         for (Recipe r : MainActivity.Recipes){
             if (r.getName().equalsIgnoreCase(recipeName)){
                 r.addEvaluation(new Evaluation(this, comments, rating));
+                return;
             }
         }
     }
