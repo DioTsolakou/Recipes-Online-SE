@@ -32,4 +32,5 @@ class Ingredient {
     public int hashCode(){
         return name.hashCode() * new Integer(calories).hashCode();
     }
+
 }

@@ -37,9 +37,8 @@ class RegisteredUser extends User {
 
     double calcRecipeCalories(int recipeId) {
         for (Recipe r : MainActivity.Recipes) {
-            if (r.getId() == recipeId) {
+            if (r.getId() == recipeId)
                 return r.calcCalories();
-            }
         }
         return -1;
     }
@@ -52,4 +51,5 @@ class RegisteredUser extends User {
             }
         }
     }
+
 }
