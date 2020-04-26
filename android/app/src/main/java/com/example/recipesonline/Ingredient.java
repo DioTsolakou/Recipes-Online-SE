@@ -1,7 +1,5 @@
 package com.example.recipesonline;
 
-import java.util.Objects;
-
 class Ingredient {
 
     private String name;
