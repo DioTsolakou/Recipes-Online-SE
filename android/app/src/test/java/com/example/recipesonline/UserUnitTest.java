@@ -42,7 +42,7 @@ public class UserUnitTest {
         listTypes.add(type2);
 
         ru.createRecipe("recipeName", listRI, "recipeDesc", listTypes);
-        
+
     }
 
     @Test
