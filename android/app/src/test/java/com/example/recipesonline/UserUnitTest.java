@@ -12,8 +12,8 @@ public class UserUnitTest {
     private User u = new User();
     private RegisteredUser ru;
     private Admin a = new Admin("adminName", "adminUsername", "adminPswd");
-    private Recipe recipe;
     private static int i = 0;
+    private Ingredient ingredient1, ingredient2;
 
     @Before
     public void createRecipeTest() {
@@ -22,11 +22,11 @@ public class UserUnitTest {
         ru = (RegisteredUser) u.login("userUsername", "userPswd");
         i++;
 
-        Ingredient ingredient = new Ingredient("ingr1", 100);
-        Ingredient ingredient1 = new Ingredient("ingr2", 25);
+        ingredient1 = new Ingredient("ingr1");
+        ingredient2 = new Ingredient("ingr2");
 
-        MainActivity.Ingredients.add(ingredient);
         MainActivity.Ingredients.add(ingredient1);
+        MainActivity.Ingredients.add(ingredient2);
 
         RecipeIngredient recipeIngredient1 = new RecipeIngredient("ingr1", 1, "g");
         RecipeIngredient recipeIngredient2 = new RecipeIngredient("ingr2", 1, "g");
@@ -41,9 +41,7 @@ public class UserUnitTest {
         listTypes.add(type1);
         listTypes.add(type2);
 
-        recipe = new Recipe(ru, "recipeName" + i, listRI, "recipeDesc", listTypes);
         ru.createRecipe("recipeName", listRI, "recipeDesc", listTypes);
-        //System.out.println("Recipes created: " + MainActivity.Recipes.size());
 
     }
 
@@ -71,6 +69,17 @@ public class UserUnitTest {
     }
 
     @Test
+    public void updateIngredientTest() {
+        a.updateIngredient("ingr1", "salt", 100);
+        a.updateIngredient("ingr2", "pepper", 150);
+        Assert.assertEquals(2, MainActivity.Ingredients.size());
+        Assert.assertEquals("salt", ((Ingredient)(MainActivity.Ingredients.toArray()[0])).getName());
+        Assert.assertEquals("pepper", ((Ingredient)(MainActivity.Ingredients.toArray()[1])).getName());
+        Assert.assertEquals(100, ((Ingredient)(MainActivity.Ingredients.toArray()[0])).getCalories());
+        Assert.assertEquals(150, ((Ingredient)(MainActivity.Ingredients.toArray()[1])).getCalories());
+    }
+
+    @Test
     public void searchTest() {
         Assert.assertEquals(i, ru.search("recipeName").size());
     }
@@ -83,14 +92,14 @@ public class UserUnitTest {
 
     @Test
     public void calcRecipeCaloriesTest() {
-        Assert.assertEquals(1.25, ru.calcRecipeCalories("recipeName"), 0.0);
+        Assert.assertEquals(0, ru.calcRecipeCalories(i), 0.0);
     }
 
     @Test
     public void evaluateTest() {
-        ru.evaluate("recipeName", "recipeComments", 5);
-        ru.evaluate("recipeName", "recipeComments", 10);
-        Assert.assertEquals(2, MainActivity.Recipes.get(0).getEvaluationList().size());
-        Assert.assertEquals(7.5, MainActivity.Recipes.get(0).calcEvaluation(), 0.00);
+        ru.evaluate(i, "recipeComments", 5);
+        ru.evaluate(i, "recipeComments", 10);
+        Assert.assertEquals(2, MainActivity.Recipes.get(i-1).getEvaluationList().size());
+        Assert.assertEquals(7.5, MainActivity.Recipes.get(i-1).calcEvaluation(), 0.00);
     }
 }

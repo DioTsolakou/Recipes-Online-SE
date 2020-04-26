@@ -1,24 +1,37 @@
 package com.example.recipesonline;
 
-public class Ingredient {
+import java.util.Objects;
+
+class Ingredient {
 
     private String name;
     private int calories;
 
-    public Ingredient(String name) {
+    Ingredient(String name) {
         this.name = name;
         this.calories = 0;
     }
 
-    public Ingredient(String name, int calories) {
+    Ingredient(String name, int calories) {
         this.name = name;
         this.calories = calories;
     }
 
-    public String getName() {return name;}
-    public int getCalories() {return calories;}
+    String getName() {return name;}
+    int getCalories() {return calories;}
 
-    public void setName(String name) {this.name = name;}
-    public void setCalories(int calories) {this.calories = calories;}
+    void setName(String name) {this.name = name;}
+    void setCalories(int calories) {this.calories = calories;}
 
+    @Override
+    public boolean equals(Object i){
+        if(!(i instanceof Ingredient)) return false;
+        return ( ( ((Ingredient)i).getName().equalsIgnoreCase(this.name) ) &&
+                ( (Ingredient)i).getCalories() == this.calories );
+    }
+
+    @Override
+    public int hashCode(){
+        return name.hashCode() * new Integer(calories).hashCode();
+    }
 }

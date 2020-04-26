@@ -1,12 +1,12 @@
 package com.example.recipesonline;
 
-public class RecipeIngredient {
+class RecipeIngredient {
 
-    Ingredient ingredient;
-    double amount;
-    String metricUnit;
+    private Ingredient ingredient;
+    private double amount;
+    private String metricUnit;
 
-    public RecipeIngredient(String ingredientName, double amount, String metricUnit) {
+    RecipeIngredient(String ingredientName, double amount, String metricUnit) {
         for (Ingredient ingredient : MainActivity.Ingredients) {
             if (ingredientName.equalsIgnoreCase(ingredient.getName())) {
                 this.ingredient = ingredient;
@@ -24,12 +24,12 @@ public class RecipeIngredient {
         this.metricUnit = metricUnit;
     }
 
-    public Ingredient getIngredient() {return ingredient;}
-    public double getAmount() {return amount;}
-    public String getMetricUnit() {return metricUnit;}
+    Ingredient getIngredient() {return ingredient;}
+    double getAmount() {return amount;}
+    String getMetricUnit() {return metricUnit;}
 
-    public void setIngredient(Ingredient ingredient) {this.ingredient = ingredient;}
-    public void setAmount(double amount) {this.amount = amount;}
-    public void setMetricUnit(String metricUnit) {this.metricUnit = metricUnit;}
+    void setIngredient(Ingredient ingredient) {this.ingredient = ingredient;}
+    void setAmount(double amount) {this.amount = amount;}
+    void setMetricUnit(String metricUnit) {this.metricUnit = metricUnit;}
 
 }

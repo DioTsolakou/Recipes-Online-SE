@@ -3,8 +3,10 @@ package com.example.recipesonline;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Recipe {
+class Recipe {
 
+    private static int count = 0;
+    private int id;
     private RegisteredUser user;
     private String name;
     private String description;
@@ -12,34 +14,37 @@ public class Recipe {
     private List<String> types;
     private List<Evaluation> evaluationList;
 
-    public Recipe() {}
+    Recipe() {}
 
-    public Recipe(RegisteredUser user, String name, List<RecipeIngredient> ingredients, String description, List<String> types) {
+    Recipe(RegisteredUser user, String name, List<RecipeIngredient> recipeIngredients, String description, List<String> types) {
+        this.id = ++count;
         this.user = user;
         this.name = name;
         this.description = description;
-        this.ingredients = ingredients;
+        this.ingredients = recipeIngredients;
         this.types = types;
         evaluationList = new ArrayList<Evaluation>();
     }
 
-    public RegisteredUser getUser() {return user;}
-    public String getName() {return name;}
-    public String getDescription() {return description;}
-    public List<RecipeIngredient> getIngredients() {return ingredients;}
-    public List<String> getTypes() {return types;}
-    public List<Evaluation> getEvaluationList() {return evaluationList;}
+    int getId() {return id;}
+    RegisteredUser getUser() {return user;}
+    String getName() {return name;}
+    String getDescription() {return description;}
+    List<RecipeIngredient> getIngredients() {return ingredients;}
+    List<String> getTypes() {return types;}
+    List<Evaluation> getEvaluationList() {return evaluationList;}
 
-    public void setName(RegisteredUser user) {this.user = user;}
-    public void setName(String name) {this.name = name;}
-    public void setDescription(String description) {this.description = description;}
-    public void setIngredients(List<RecipeIngredient> ingredients) {this.ingredients = ingredients;}
-    public void setEvaluationList(List<Evaluation> evaluationList) {this.evaluationList = evaluationList;}
+    void setId(int id) {this.id = id;}
+    void setName(RegisteredUser user) {this.user = user;}
+    void setName(String name) {this.name = name;}
+    void setDescription(String description) {this.description = description;}
+    void setIngredients(List<RecipeIngredient> ingredients) {this.ingredients = ingredients;}
+    void setEvaluationList(List<Evaluation> evaluationList) {this.evaluationList = evaluationList;}
 
-    public void addIngredient(RecipeIngredient ri) {ingredients.add(ri);}
-    public void addEvaluation(Evaluation e) {evaluationList.add(e);}
+    void addIngredient(RecipeIngredient ri) {ingredients.add(ri);}
+    void addEvaluation(Evaluation e) {evaluationList.add(e);}
 
-    public double calcEvaluation() {
+    double calcEvaluation() {
         double totalRatings = 0.0;
         for (Evaluation evaluation : evaluationList) {
             totalRatings += evaluation.getRating();
@@ -47,7 +52,7 @@ public class Recipe {
         return totalRatings / (double) evaluationList.size();
     }
 
-    public double calcCalories() {
+    double calcCalories() {
         double totalCalories = 0;
         for (RecipeIngredient recipeIngredient : ingredients) {
             totalCalories += (recipeIngredient.getIngredient().getCalories()) * (recipeIngredient.getAmount() / 100.0);

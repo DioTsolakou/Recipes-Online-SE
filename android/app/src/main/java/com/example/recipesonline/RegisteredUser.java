@@ -2,33 +2,32 @@ package com.example.recipesonline;
 
 import java.util.List;
 
-public class RegisteredUser extends User {
+class RegisteredUser extends User {
 
     private String name;
     private String username;
     private String password;
 
-    public RegisteredUser(String name, String username, String password) {
+    RegisteredUser(String name, String username, String password) {
         this.name = name;
         this.username = username;
         this.password = password;
     }
 
-    public String getName() {return name;}
-    public String getUsername() {return username;}
-    public String getPassword() {return password;}
+    String getName() {return name;}
+    String getUsername() {return username;}
+    String getPassword() {return password;}
 
-    public void setName(String name) {this.name = name;}
-    public void setUsername(String username) {this.username = username;}
-    public void setPassword(String password) {this.password = password;}
+    void setName(String name) {this.name = name;}
+    void setUsername(String username) {this.username = username;}
+    void setPassword(String password) {this.password = password;}
 
     @Override
-    public void logoutUser() {
+    void logoutUser() {
         MainActivity.LoggedInRegisteredUsers.remove(this);
-        System.out.println("You have been logged out.");
     }
 
-    public void createRecipe(String name, List<RecipeIngredient> recipeIngredients, String description, List<String> types) {
+    void createRecipe(String name, List<RecipeIngredient> recipeIngredients, String description, List<String> types) {
         MainActivity.Recipes.add(new Recipe(this, name, recipeIngredients, description, types));
     }
 
@@ -36,18 +35,18 @@ public class RegisteredUser extends User {
         MainActivity.Recipes.add(r);
     }*/
 
-    public double calcRecipeCalories(String recipeName) {
+    double calcRecipeCalories(int recipeId) {
         for (Recipe r : MainActivity.Recipes) {
-            if (r.getName().equalsIgnoreCase(recipeName)) {
+            if (r.getId() == recipeId) {
                 return r.calcCalories();
             }
         }
         return -1;
     }
 
-    public void evaluate(String recipeName, String comments, int rating) {
+    void evaluate(int recipeId, String comments, int rating) {
         for (Recipe r : MainActivity.Recipes) {
-            if (r.getName().equalsIgnoreCase(recipeName)) {
+            if (r.getId() == recipeId) {
                 r.addEvaluation(new Evaluation(this, comments, rating));
                 return;
             }
