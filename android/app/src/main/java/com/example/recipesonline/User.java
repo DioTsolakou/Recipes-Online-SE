@@ -37,9 +37,8 @@ class User {
         return null;
     }
 
-    void logout(String ans) {
-        if (ans.equalsIgnoreCase("yes"))
-            logoutUser();
+    void logout() {
+        logoutUser();
         System.out.println("You have logged out.");
     }
 

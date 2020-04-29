@@ -65,8 +65,8 @@ public class UserUnitTest {
 
     @Test
     public void logoutTest() {
-        ru.logout("yes");
-        a.logout("yes");
+        ru.logout();
+        a.logout();
         Assert.assertEquals(0, MainActivity.LoggedInRegisteredUsers.size());
         Assert.assertEquals(0, MainActivity.LoggedInAdmins.size());
     }
