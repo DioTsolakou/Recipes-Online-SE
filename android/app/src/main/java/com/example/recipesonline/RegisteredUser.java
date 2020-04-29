@@ -31,10 +31,6 @@ class RegisteredUser extends User {
         MainActivity.Recipes.add(new Recipe(this, name, recipeIngredients, description, types));
     }
 
-    /*public void createRecipe(Recipe r) {
-        MainActivity.Recipes.add(r);
-    }*/
-
     double calcRecipeCalories(int recipeId) {
         for (Recipe r : MainActivity.Recipes) {
             if (r.getId() == recipeId)
@@ -46,6 +42,14 @@ class RegisteredUser extends User {
     void evaluate(int recipeId, String comments, int rating) {
         for (Recipe r : MainActivity.Recipes) {
             if (r.getId() == recipeId) {
+                for (Evaluation e : r.getEvaluationList())
+                {
+                    if (this.getUsername().equals(e.getUser().getUsername()))
+                    {
+                        System.out.println("You have already evaluated this recipe.");
+                        return;
+                    }
+                }
                 r.addEvaluation(new Evaluation(this, comments, rating));
                 return;
             }
