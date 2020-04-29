@@ -33,14 +33,14 @@ class User {
             }
         }
 
-        System.out.println("Wrong credentials!");
+        System.out.println("Login failed due to wrong credentials.");
         return null;
     }
 
     void logout(String ans) {
         if (ans.equalsIgnoreCase("yes"))
             logoutUser();
-        System.out.println("You have been logged out.");
+        System.out.println("You have logged out.");
     }
 
     void logoutUser() {}

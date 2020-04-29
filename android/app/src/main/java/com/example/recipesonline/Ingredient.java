@@ -22,10 +22,9 @@ class Ingredient {
     void setCalories(int calories) {this.calories = calories;}
 
     @Override
-    public boolean equals(Object i){
+    public boolean equals(Object i) {
         if(!(i instanceof Ingredient)) return false;
-        return ( ( ((Ingredient)i).getName().equalsIgnoreCase(this.name) ) &&
-                ( (Ingredient)i).getCalories() == this.calories );
+        return ( ( ((Ingredient)i).getName().equalsIgnoreCase(this.name) ) && ( (Ingredient)i).getCalories() == this.calories );
     }
 
     @Override

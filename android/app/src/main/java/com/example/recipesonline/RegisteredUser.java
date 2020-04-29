@@ -50,6 +50,7 @@ class RegisteredUser extends User {
                 return;
             }
         }
+        System.out.println("No recipe found");
     }
 
 }

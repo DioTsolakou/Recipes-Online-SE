@@ -35,7 +35,7 @@ class Recipe {
     List<String> getTypes() {return types;}
     List<Evaluation> getEvaluationList() {return evaluationList;}
 
-    void setCount(int c) {count = c;}
+    static void setCount(int c) {count = c;}
     static void clearCount() {count = 0;}
     void setId(int id) {this.id = id;}
     void setName(RegisteredUser user) {this.user = user;}

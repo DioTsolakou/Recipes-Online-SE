@@ -22,7 +22,6 @@ public class UserUnitTest {
         u = new User();
         u.register("userName", "userUsername", "userPswd", "userPswd");
         ru = (RegisteredUser) u.login("userUsername", "userPswd");
-        //i++;
         MainActivity.Admins.add(new Admin("adminName", "adminUsername", "adminPswd"));
         a = (Admin) u.login("adminUsername", "adminPswd");
 
@@ -45,14 +44,12 @@ public class UserUnitTest {
 
         ru.createRecipe("recipeName", listRI, "recipeDesc", listRT);
         r = MainActivity.Recipes.get(0);
-        //Assert.assertEquals(i, MainActivity.Recipes.size());
         Assert.assertEquals(1, MainActivity.Recipes.size());
 
     }
 
     @Test
     public void registerTest() {
-        //Assert.assertEquals(i, MainActivity.RegisteredUsers.size());
         Assert.assertEquals(1, MainActivity.RegisteredUsers.size());
         a.register("newAdminName", "newAdminUsername", "newAdminPswd", "newAdminPswd");
         Assert.assertEquals(2, MainActivity.Admins.size());
@@ -60,7 +57,8 @@ public class UserUnitTest {
 
     @Test
     public void loginTest() {
-        //Assert.assertEquals(i, MainActivity.LoggedInRegisteredUsers.size());
+        RegisteredUser tempRU = (RegisteredUser) u.login("fakeUsername", "fakePswd");
+        Assert.assertNull(tempRU);
         Assert.assertEquals(1, MainActivity.LoggedInRegisteredUsers.size());
         Assert.assertEquals(1, MainActivity.LoggedInAdmins.size());
     }
@@ -69,7 +67,6 @@ public class UserUnitTest {
     public void logoutTest() {
         ru.logout("yes");
         a.logout("yes");
-        //Assert.assertEquals(i - 1, MainActivity.LoggedInRegisteredUsers.size());
         Assert.assertEquals(0, MainActivity.LoggedInRegisteredUsers.size());
         Assert.assertEquals(0, MainActivity.LoggedInAdmins.size());
     }
@@ -78,25 +75,23 @@ public class UserUnitTest {
     public void updateIngredientTest() {
         a.updateIngredient("ingr1", "salt", 100);
         a.updateIngredient("ingr2", "pepper", 150);
+        a.updateIngredient("fakeIngr", "fake", 0);
         Assert.assertEquals(2, MainActivity.Ingredients.size());
         Assert.assertEquals("salt", ((Ingredient)(MainActivity.Ingredients.toArray()[0])).getName());
-        Assert.assertEquals("pepper", ((Ingredient)(MainActivity.Ingredients.toArray()[1])).getName());
         Assert.assertEquals(100, ((Ingredient)(MainActivity.Ingredients.toArray()[0])).getCalories());
+        Assert.assertEquals("pepper", ((Ingredient)(MainActivity.Ingredients.toArray()[1])).getName());
         Assert.assertEquals(150, ((Ingredient)(MainActivity.Ingredients.toArray()[1])).getCalories());
         Assert.assertNotEquals(0, ru.calcRecipeCalories(1), 0.0);
     }
 
     @Test
     public void searchTest() {
-        //Assert.assertEquals(i, ru.search("recipeName").size());
         Assert.assertEquals(1, ru.search("recipeName").size());
         Assert.assertEquals(0, ru.search("fakeName").size());
     }
 
     @Test
     public void searchByTypeTest() {
-        //Assert.assertEquals(i, ru.searchByType("recipeType1").size());
-        //Assert.assertEquals(i, ru.searchByType("recipeType2").size());
         Assert.assertEquals(1, ru.searchByType("recipeType1").size());
         Assert.assertEquals(1, ru.searchByType("recipeType2").size());
         Assert.assertEquals(0, ru.searchByType("fakeType").size());
@@ -104,18 +99,15 @@ public class UserUnitTest {
 
     @Test
     public void calcRecipeCaloriesTest() {
-        //Assert.assertEquals(0, ru.calcRecipeCalories(i), 0.0);
         Assert.assertEquals(0, ru.calcRecipeCalories(1), 0.0);
+        Assert.assertEquals(-1, ru.calcRecipeCalories(2), 0.0);
     }
 
     @Test
     public void evaluateTest() {
-        //ru.evaluate(i, "recipeComments", 5);
-        //ru.evaluate(i, "recipeComments", 10);
-        //Assert.assertEquals(2, MainActivity.Recipes.get(i-1).getEvaluationList().size());
-        //Assert.assertEquals(7.5, MainActivity.Recipes.get(i-1).calcEvaluation(), 0.00);
         ru.evaluate(1, "recipeComments1", 5);
         ru.evaluate(1, "recipeComments2", 10);
+        ru.evaluate(2, "fakeComments", 0);
         Assert.assertEquals(2, r.getEvaluationList().size());
         Assert.assertEquals(7.5, r.calcEvaluation(), 0.00);
     }
@@ -123,19 +115,15 @@ public class UserUnitTest {
     @Test
     public void addIngredientTest() {
         Assert.assertEquals(2, MainActivity.Ingredients.size());
-        //int sizeBefore = MainActivity.Recipes.get(i-1).getIngredients().size();
-        //MainActivity.Recipes.get(i-1).addIngredient(new RecipeIngredient("ingr3", 200, "g"));
-        //int sizeAfter = MainActivity.Recipes.get(i-1).getIngredients().size();
-        //Assert.assertEquals(sizeBefore + 1, sizeAfter);
         int sizeBefore = r.getIngredients().size();
         r.addIngredient(new RecipeIngredient("ingr3", 200, "ml"));
         int sizeAfter = r.getIngredients().size();
         Assert.assertEquals(sizeAfter, sizeBefore + 1);
         Assert.assertEquals(3, MainActivity.Ingredients.size());
 
-        a.updateIngredient("ingr3", "water", 0);
+        a.updateIngredient("ingr3", "water", 1);
         Assert.assertEquals("water", ((Ingredient)(MainActivity.Ingredients.toArray()[2])).getName());
-        Assert.assertEquals(0, ((Ingredient)(MainActivity.Ingredients.toArray()[2])).getCalories());
+        Assert.assertEquals(1, ((Ingredient)(MainActivity.Ingredients.toArray()[2])).getCalories());
     }
 
     @After
@@ -147,6 +135,7 @@ public class UserUnitTest {
         MainActivity.Admins.clear();
         MainActivity.LoggedInAdmins.clear();
         Recipe.clearCount();
+        Evaluation.clearCount();
     }
 
 }
