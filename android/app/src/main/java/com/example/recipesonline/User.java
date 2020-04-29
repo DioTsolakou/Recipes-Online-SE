@@ -8,6 +8,24 @@ class User {
     User() {}
 
     void register(String name, String username, String password1, String password2) {
+        for (RegisteredUser rU : MainActivity.RegisteredUsers)
+        {
+            if (rU.getUsername().equals(username))
+            {
+                System.out.println("This username already exists.");
+                return;
+            }
+        }
+
+        for (Admin admin : MainActivity.Admins)
+        {
+            if (admin.getUsername().equals(username))
+            {
+                System.out.println("This username already exists.");
+                return;
+            }
+        }
+
         if (password1.equals(password2))
             registerUser(name, username, password1);
     }

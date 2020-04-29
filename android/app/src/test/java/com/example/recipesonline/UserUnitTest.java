@@ -13,7 +13,6 @@ public class UserUnitTest {
     private User u;
     private RegisteredUser ru;
     private Admin a;
-    //private static int i = 0;
     private Recipe r;
 
     @Before
@@ -50,6 +49,7 @@ public class UserUnitTest {
 
     @Test
     public void registerTest() {
+        u.register("userName", "userUsername", "userPswd", "userPswd");
         Assert.assertEquals(1, MainActivity.RegisteredUsers.size());
         a.register("newAdminName", "newAdminUsername", "newAdminPswd", "newAdminPswd");
         Assert.assertEquals(2, MainActivity.Admins.size());
@@ -108,8 +108,8 @@ public class UserUnitTest {
         ru.evaluate(1, "recipeComments1", 5);
         ru.evaluate(1, "recipeComments2", 10);
         ru.evaluate(2, "fakeComments", 0);
-        Assert.assertEquals(2, r.getEvaluationList().size());
-        Assert.assertEquals(7.5, r.calcEvaluation(), 0.00);
+        Assert.assertEquals(1, r.getEvaluationList().size());
+        Assert.assertEquals(5, r.calcEvaluation(), 0.00);
     }
 
     @Test
