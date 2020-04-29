@@ -7,9 +7,9 @@ class RecipeIngredient {
     private String metricUnit;
 
     RecipeIngredient(String ingredientName, double amount, String metricUnit) {
-        for (Ingredient ingredient : MainActivity.Ingredients) {
-            if (ingredientName.equalsIgnoreCase(ingredient.getName())) {
-                this.ingredient = ingredient;
+        for (Ingredient i : MainActivity.Ingredients) {
+            if (ingredientName.equalsIgnoreCase(i.getName())) {
+                this.ingredient = i;
                 break;
             }
         }

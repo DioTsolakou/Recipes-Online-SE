@@ -1,55 +1,31 @@
 package com.example.recipesonline;
 
-public class Evaluation {
+class Evaluation {
 
-    private static int id;
+    private static int count = 0;
+    private int id;
     private RegisteredUser user;
     private String comments;
     private int rating;
-    private Recipe recipe;
 
-    public Evaluation(RegisteredUser user, String comments, int rating) {
+    Evaluation(RegisteredUser user, String comments, int rating) {
+        this.id = ++count;
         this.user = user;
         this.comments = comments;
         this.rating = rating;
-        recipe = new Recipe();
     }
 
-    public int getId()
-    {
-        return id;
-    }
+    int getCount() {return count;}
+    int getId() {return id;}
+    RegisteredUser getUser() {return user;}
+    String getComments() {return comments;}
+    int getRating() {return rating;}
 
-    public void setId(int id)
-    {
-        this.id = id;
-    }
+    static void setCount(int c) {count = c;}
+    static void clearCount() {count = 0;}
+    void setId(int id) {this.id = id;}
+    void setUser(RegisteredUser user) {this.user = user;}
+    void setComments(String comments) {this.comments = comments;}
+    void setRating(int rating) {this.rating = rating;}
 
-    public String getComments()
-    {
-        return comments;
-    }
-    public void setComments(String comments)
-    {
-        this.comments = comments;
-    }
-
-    public int getRating()
-    {
-        return rating;
-
-    }
-    public void setRating(int rating)
-    {
-        this.rating = rating;
-    }
-
-    public Recipe getRecipe()
-    {
-        return recipe;
-    }
-    public void setRecipe(Recipe recipe)
-    {
-        this.recipe = recipe;
-    }
 }

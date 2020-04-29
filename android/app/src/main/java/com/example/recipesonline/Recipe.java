@@ -26,6 +26,7 @@ class Recipe {
         evaluationList = new ArrayList<Evaluation>();
     }
 
+    static int getCount() {return count;}
     int getId() {return id;}
     RegisteredUser getUser() {return user;}
     String getName() {return name;}
@@ -34,6 +35,8 @@ class Recipe {
     List<String> getTypes() {return types;}
     List<Evaluation> getEvaluationList() {return evaluationList;}
 
+    static void setCount(int c) {count = c;}
+    static void clearCount() {count = 0;}
     void setId(int id) {this.id = id;}
     void setName(RegisteredUser user) {this.user = user;}
     void setName(String name) {this.name = name;}
@@ -59,4 +62,5 @@ class Recipe {
         }
         return totalCalories;
     }
+
 }
