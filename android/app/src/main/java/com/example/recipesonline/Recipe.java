@@ -14,8 +14,7 @@ class Recipe {
     private List<String> types;
     private List<Evaluation> evaluationList;
 
-    Recipe() {}
-
+    /* Constructor */
     Recipe(RegisteredUser user, String name, List<RecipeIngredient> recipeIngredients, String description, List<String> types) {
         this.id = ++count;
         this.user = user;
@@ -47,6 +46,7 @@ class Recipe {
     void addIngredient(RecipeIngredient ri) {ingredients.add(ri);}
     void addEvaluation(Evaluation e) {evaluationList.add(e);}
 
+    /* Calculates the evaluation of a recipe */
     double calcEvaluation() {
         double totalRatings = 0.0;
         for (Evaluation evaluation : evaluationList) {
@@ -55,6 +55,7 @@ class Recipe {
         return totalRatings / (double) evaluationList.size();
     }
 
+    /* Calculates the calories of a recipe */
     double calcCalories() {
         double totalCalories = 0;
         for (RecipeIngredient recipeIngredient : ingredients) {

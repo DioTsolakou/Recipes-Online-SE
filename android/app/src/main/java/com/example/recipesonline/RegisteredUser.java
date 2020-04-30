@@ -8,6 +8,7 @@ class RegisteredUser extends User {
     private String username;
     private String password;
 
+    /* Constructor */
     RegisteredUser(String name, String username, String password) {
         this.name = name;
         this.username = username;
@@ -27,6 +28,7 @@ class RegisteredUser extends User {
         MainActivity.LoggedInRegisteredUsers.remove(this);
     }
 
+    /* Creates a recipe */
     void createRecipe(String name, List<RecipeIngredient> recipeIngredients, String description, List<String> types) {
         MainActivity.Recipes.add(new Recipe(this, name, recipeIngredients, description, types));
     }
@@ -39,6 +41,7 @@ class RegisteredUser extends User {
         return -1;
     }
 
+    /* Evaluates a recipe */
     void evaluate(int recipeId, String comments, int rating) {
         for (Recipe r : MainActivity.Recipes) {
             if (r.getId() == recipeId) {

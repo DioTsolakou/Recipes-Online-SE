@@ -8,6 +8,7 @@ class Evaluation {
     private String comments;
     private int rating;
 
+    /* Constructor */
     Evaluation(RegisteredUser user, String comments, int rating) {
         this.id = ++count;
         this.user = user;

@@ -5,6 +5,7 @@ class Admin extends User {
     private String username;
     private String password;
 
+    /* Constructor */
     Admin(String name, String username, String password) {
         this.name = name;
         this.username = username;
@@ -29,6 +30,7 @@ class Admin extends User {
         MainActivity.LoggedInAdmins.remove(this);
     }
 
+    /* Update the existing ingredients with the appropriate name and calories */
     void updateIngredient(String ingredientName, String correctName, int calories) {
         for (Ingredient i : MainActivity.Ingredients) {
             if (ingredientName.equalsIgnoreCase(i.getName())) {

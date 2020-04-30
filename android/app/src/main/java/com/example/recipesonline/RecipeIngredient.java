@@ -6,14 +6,16 @@ class RecipeIngredient {
     private double amount;
     private String metricUnit;
 
+    /* Constructor */
     RecipeIngredient(String ingredientName, double amount, String metricUnit) {
+        /* Checks if the ingredient already exists */
         for (Ingredient i : MainActivity.Ingredients) {
             if (ingredientName.equalsIgnoreCase(i.getName())) {
                 this.ingredient = i;
                 break;
             }
         }
-
+        /* Creates the ingredient if it doesn't exist */
         if (ingredient == null) {
             Ingredient ingredient = new Ingredient(ingredientName);
             MainActivity.Ingredients.add(ingredient);

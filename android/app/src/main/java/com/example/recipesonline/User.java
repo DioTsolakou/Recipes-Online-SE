@@ -5,9 +5,12 @@ import java.util.List;
 
 class User {
 
+    /* Empty constructor */
     User() {}
 
+    /* Registers a user (as an Admin or Registered User) */
     void register(String name, String username, String password1, String password2) {
+        /* Searches if the username already exists (it must be unique ti be accepted) */
         for (RegisteredUser rU : MainActivity.RegisteredUsers)
         {
             if (rU.getUsername().equals(username))
@@ -34,6 +37,7 @@ class User {
         MainActivity.RegisteredUsers.add(new RegisteredUser(name, username, password));
     }
 
+    /* Allows to registered Users and Admins to login */
     User login(String username, String password) {
         for (Admin a : MainActivity.Admins) {
             if (a.getUsername().equals(username) && a.getPassword().equals(password)) {
@@ -55,13 +59,16 @@ class User {
         return null;
     }
 
+    /* Allows to logged in users to logout */
     void logout() {
         logoutUser();
         System.out.println("You have logged out.");
     }
 
+    /* Is used for overriding */
     void logoutUser() {}
 
+    /* Searches the recipe by name */
     List<Recipe> search(String name) {
         List<Recipe> result = new ArrayList<>();
         for (Recipe r : MainActivity.Recipes) {
@@ -70,6 +77,7 @@ class User {
         return result;
     }
 
+    /* Searches the recipe by their types */
     List<Recipe> searchByType(String typeName) {
         List<Recipe> result = new ArrayList<>();
         for (Recipe r : MainActivity.Recipes) {
