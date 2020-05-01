@@ -37,7 +37,7 @@ class Recipe {
     static void setCount(int c) {count = c;}
     static void clearCount() {count = 0;}
     void setId(int id) {this.id = id;}
-    void setName(RegisteredUser user) {this.user = user;}
+    void setUser(RegisteredUser user) {this.user = user;}
     void setName(String name) {this.name = name;}
     void setDescription(String description) {this.description = description;}
     void setIngredients(List<RecipeIngredient> ingredients) {this.ingredients = ingredients;}
