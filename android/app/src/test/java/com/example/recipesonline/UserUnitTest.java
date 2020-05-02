@@ -92,14 +92,14 @@ public class UserUnitTest {
     public void searchTest() {
         Assert.assertEquals(0, u.search("fakeRecipe", listRT, listRI).size());
         Assert.assertEquals(0, ru.search("fakeRecipe", listRT, listRI, 4 ).size());
-        Assert.assertEquals(1, u.search(null,new ArrayList<String>(), listRI).size());
+        Assert.assertEquals(1, u.search(null, new ArrayList<String>(), listRI).size());
         Assert.assertEquals(1, u.search("recipeName", listRT, listRI).size());
         Assert.assertEquals(1, ru.search("recipeName", listRT, listRI, 0 ).size());
         Assert.assertEquals(1, u.search(null, listRT, listRI).size());
         Assert.assertEquals(1, u.search("recipeName", new ArrayList<String>(), listRI).size());
         Assert.assertEquals(1, u.search("recipeName", listRT, new ArrayList<RecipeIngredient>()).size());
         Assert.assertEquals(0, u.search("fakeRecipe", new ArrayList<String>(), new ArrayList<RecipeIngredient>()).size());
-        Assert.assertEquals(0, u.search(null, new ArrayList<String>(), new ArrayList<RecipeIngredient>()).size());
+        Assert.assertEquals(1, u.search(null, new ArrayList<String>(), new ArrayList<RecipeIngredient>()).size());
     }
 
     /* Checks if the calories of a recipe are the expected */

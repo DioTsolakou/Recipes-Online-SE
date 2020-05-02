@@ -70,27 +70,20 @@ class User {
 
     /* Advanced search for user */
     HashSet<Recipe> search(String name, List<String> types, List<RecipeIngredient> ri) {
-        HashSet<Recipe> r1 = new HashSet<>();
-        HashSet<Recipe> r2 = new HashSet<>();
-        HashSet<Recipe> r3 = new HashSet<>();
-        HashSet<Recipe> result = new HashSet<>();
+        HashSet<Recipe> rtemp = new HashSet<>();
+        HashSet<Recipe> result = new HashSet<>(MainActivity.Recipes);
 
         if (name != null) {
-            r1.addAll(searchByName(name));
-            result.addAll(r1);
+            rtemp.addAll(searchByName(name));
+            result.retainAll(rtemp);
         }
-        if (types.size() > 0  && name!=null) {
-            r2.addAll(searchByType(types));
-            result.retainAll(r2);
+        if (types.size() > 0) {
+            rtemp.addAll(searchByType(types));
+            result.retainAll(rtemp);
         }
-        else{
-            r2.addAll(searchByType(types));
-            result.addAll(r2);
-        }
-        
         if (ri.size() > 0) {
-            r3.addAll(searchByIngredients(ri));
-            result.retainAll(r3);
+            rtemp.addAll(searchByIngredients(ri));
+            result.retainAll(rtemp);
         }
 
         return result;
