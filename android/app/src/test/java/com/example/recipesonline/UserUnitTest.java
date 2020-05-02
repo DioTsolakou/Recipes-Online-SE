@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 public class UserUnitTest {
@@ -94,19 +95,14 @@ public class UserUnitTest {
     /* Tests if the search detects the actual number of recipes wanted */
     @Test
     public void searchTest() {
-        Assert.assertEquals(1, u.search("recipeName", listRT), );
-        Assert.assertEquals(0, ru.search("fakeName").size());
+        Assert.assertEquals(0, u.search("fakeRecipe", listRT, listRI).size());
+        Assert.assertEquals(0, ru.search("fakeRecipe", listRT, listRI, 4 ).size());
+        Assert.assertEquals(0, u.search(null,new ArrayList<String>(), listRI).size());
+        Assert.assertEquals(1, u.search("recipeName", listRT, listRI).size());
+        Assert.assertEquals(1, ru.search("recipeName", listRT, listRI, 0 ).size());
     }
 
-    @Test
-    public void search() {
-
-        Assert.assertEquals(1, ru.searchByType("recipeType1").size());
-        Assert.assertEquals(1, ru.searchByType("recipeType2").size());
-        Assert.assertEquals(0, ru.searchByType("fakeType").size());
-    }
-
-    @Test
+    /*@Test
     public void searchByCalories(){
         List<RecipeIngredient> ri = new ArrayList<>();
         Assert.assertEquals(1, ru.searchByCalories(4).size());

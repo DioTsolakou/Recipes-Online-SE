@@ -42,6 +42,7 @@ class RegisteredUser extends User {
         }
         return -1;
     }
+
     /* Searches the recipe by calories */
     List<Recipe> searchByCalories(double calories) {
         List<Recipe> result = new ArrayList<>();
@@ -52,10 +53,10 @@ class RegisteredUser extends User {
     }
 
     /* Searches a recipe with calories and by calling user's search(super) */
-    HashSet<Recipe> search(String name, List<String> types, double calories, List<RecipeIngredient> ri){
+    HashSet<Recipe> search(String name, List<String> types, List<RecipeIngredient> ri, double calories){
         HashSet<Recipe> result = new HashSet<>();
         result.addAll(super.search(name, types, ri));
-        if (calories > 0) result.addAll(searchByCalories(calories));
+        if (calories > 0) result.retainAll(searchByCalories(calories));
         return result;
     }
 

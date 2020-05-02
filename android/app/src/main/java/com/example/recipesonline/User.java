@@ -70,18 +70,25 @@ class User {
     void logoutUser() {}
 
     /* Searches the recipe by name */
-    HashSet<Recipe> search(String name, List<String> types, List<RecipeIngredient> ri){
-        HashSet<Recipe> r1 = new HashSet<>();
-        HashSet<Recipe> r2 = new HashSet<>();
-        HashSet<Recipe> r3 = new HashSet<>();
-        HashSet<Recipe> result = new HashSet<>();
+    List<Recipe> search(String name, List<String> types, List<RecipeIngredient> ri) {
+        List<Recipe> r1 = new ArrayList<>();
+        List<Recipe> r2 = new ArrayList<>();
+        List<Recipe> r3 = new ArrayList<>();
+        List<Recipe> result = new ArrayList<>();
 
-        if (name != null) r1.addAll(searchByName(name));
-        if (types.size() > 0) r2.addAll(searchByType(types));
-        if (ri.size() > 0) r3.addAll(searchByIngredients(ri));
+        if (name != null) {
+            r1.addAll(searchByName(name));
+            result.addAll(r1);
+        }
+        if (types.size() > 0) {
+            r2.addAll(searchByType(types));
+            result.retainAll(r2);
+        }
+        if (ri.size() > 0) {
+            r3.addAll(searchByIngredients(ri));
+            result.retainAll(r3);
+        }
 
-
-        result = r1.retainAll(r2);
         return result;
     }
 
