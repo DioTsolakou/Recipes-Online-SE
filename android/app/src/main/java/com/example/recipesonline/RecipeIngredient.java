@@ -10,7 +10,7 @@ class RecipeIngredient {
     RecipeIngredient(String ingredientName, double amount, String metricUnit) {
         /* Checks if the ingredient already exists */
         for (Ingredient i : MainActivity.Ingredients) {
-            if (ingredientName.equalsIgnoreCase(i.getName())) { 
+            if (ingredientName.equalsIgnoreCase(i.getName())) {
                 this.ingredient = i;
                 break;
             }

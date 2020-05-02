@@ -1,5 +1,7 @@
 package com.example.recipesonline;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 class RegisteredUser extends User {
@@ -40,8 +42,24 @@ class RegisteredUser extends User {
         }
         return -1;
     }
+    /* Searches the recipe by calories */
+    List<Recipe> searchByCalories(double calories) {
+        List<Recipe> result = new ArrayList<>();
+        for (Recipe r : MainActivity.Recipes) {
+            if (r.calcCalories() <= calories)  result.add(r);
+        }
+        return result;
+    }
 
-    /* Evaluates a recipe */
+    /* Searches a recipe with calories and by calling user's search(super) */
+    HashSet<Recipe> search(String name, List<String> types, double calories, List<RecipeIngredient> ri){
+        HashSet<Recipe> result = new HashSet<>();
+        result.addAll(super.search(name, types, ri));
+        if (calories > 0) result.addAll(searchByCalories(calories));
+        return result;
+    }
+
+        /* Evaluates a recipe */
     void evaluate(int recipeId, String comments, int rating) {
         for (Recipe r : MainActivity.Recipes) {
             if (r.getId() == recipeId) {

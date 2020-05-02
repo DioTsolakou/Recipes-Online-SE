@@ -14,6 +14,8 @@ public class UserUnitTest {
     private RegisteredUser ru;
     private Admin a;
     private Recipe r;
+    List<RecipeIngredient> listRI;
+    List<String> listRT;
 
     /* Creates a recipe and the ingredients needed for it. Also creates a registeredUser. This data will be used by all the tests. */
     @Before
@@ -32,13 +34,13 @@ public class UserUnitTest {
 
         RecipeIngredient ri1 = new RecipeIngredient("ingr1", 1, "g");
         RecipeIngredient ri2 = new RecipeIngredient("ingr2", 1, "g");
-        List<RecipeIngredient> listRI = new ArrayList<>();
+        listRI = new ArrayList<>();
         listRI.add(ri1);
         listRI.add(ri2);
 
         String rt1 = "recipeType1";
         String rt2 = "recipeType2";
-        List<String> listRT = new ArrayList<>();
+        listRT = new ArrayList<>();
         listRT.add(rt1);
         listRT.add(rt2);
 
@@ -82,30 +84,45 @@ public class UserUnitTest {
         a.updateIngredient("ingr2", "pepper", 150);
         a.updateIngredient("fakeIngr", "fake", 0);
         Assert.assertEquals(2, MainActivity.Ingredients.size());
-        Assert.assertEquals("salt", ((Ingredient)(MainActivity.Ingredients.toArray()[0])).getName());
-        Assert.assertEquals(100, ((Ingredient)(MainActivity.Ingredients.toArray()[0])).getCalories());
-        Assert.assertEquals("pepper", ((Ingredient)(MainActivity.Ingredients.toArray()[1])).getName());
-        Assert.assertEquals(150, ((Ingredient)(MainActivity.Ingredients.toArray()[1])).getCalories());
+        Assert.assertEquals("pepper", ((Ingredient)(MainActivity.Ingredients.toArray()[0])).getName());
+        Assert.assertEquals(150, ((Ingredient)(MainActivity.Ingredients.toArray()[0])).getCalories());
+        Assert.assertEquals("salt", ((Ingredient)(MainActivity.Ingredients.toArray()[1])).getName());
+        Assert.assertEquals(100, ((Ingredient)(MainActivity.Ingredients.toArray()[1])).getCalories());
         Assert.assertNotEquals(0, ru.calcRecipeCalories(1), 0.0);
     }
 
     /* Tests if the search detects the actual number of recipes wanted */
     @Test
     public void searchTest() {
-        Assert.assertEquals(1, ru.search("recipeName").size());
+        Assert.assertEquals(1, u.search("recipeName", listRT), );
         Assert.assertEquals(0, ru.search("fakeName").size());
     }
 
     @Test
-    public void searchByTypeTest() {
+    public void search() {
+
         Assert.assertEquals(1, ru.searchByType("recipeType1").size());
         Assert.assertEquals(1, ru.searchByType("recipeType2").size());
         Assert.assertEquals(0, ru.searchByType("fakeType").size());
     }
 
-    /* Checks if the calories of a recipe are the expected */
     @Test
-    public void calcRecipeCaloriesTest() {
+    public void searchByCalories(){
+        List<RecipeIngredient> ri = new ArrayList<>();
+        Assert.assertEquals(1, ru.searchByCalories(4).size());
+    }
+
+    @Test
+    public void searchByIngredient() {
+        List<RecipeIngredient> ri = new ArrayList<>();
+        ri.add(new RecipeIngredient("ingr4", 5, "g"));
+        Assert.assertEquals(1, ru.searchByIngredients(listRI).size());
+        Assert.assertEquals(0, ru.searchByIngredients(ri).size());
+    }
+
+        /* Checks if the calories of a recipe are the expected */
+    @Test
+    public void calcRecipeCaloriesTest(){
         Assert.assertEquals(0, ru.calcRecipeCalories(1), 0.0);
         Assert.assertEquals(-1, ru.calcRecipeCalories(2), 0.0);
     }
@@ -127,13 +144,17 @@ public class UserUnitTest {
         int sizeBefore = r.getIngredients().size();
         r.addIngredient(new RecipeIngredient("ingr3", 200, "ml"));
         int sizeAfter = r.getIngredients().size();
+        r.addIngredient(new RecipeIngredient("ingr1", 200, "ml"));
         Assert.assertEquals(sizeAfter, sizeBefore + 1);
         Assert.assertEquals(3, MainActivity.Ingredients.size());
 
+        System.out.println(MainActivity.Ingredients.size());
         a.updateIngredient("ingr3", "water", 1);
-        Assert.assertEquals("water", ((Ingredient)(MainActivity.Ingredients.toArray()[2])).getName());
-        Assert.assertEquals(1, ((Ingredient)(MainActivity.Ingredients.toArray()[2])).getCalories());
+        Assert.assertEquals("water", ((Ingredient)(MainActivity.Ingredients.toArray()[0])).getName());
+        System.out.println(MainActivity.Ingredients.size());
+        Assert.assertEquals(1, ((Ingredient)(MainActivity.Ingredients.toArray()[0])).getCalories());
     }
+
 
     /* Deletes all the data contained in lists and ids of recipes and ingredients when a test is completed */
     @After

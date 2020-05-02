@@ -64,4 +64,14 @@ class Recipe {
         return totalCalories;
     }
 
+    @Override
+    public boolean equals(Object r){
+        if(!(r instanceof Recipe)) return false;
+        return ((Recipe)r).getId() == this.id;
+    }
+
+    @Override
+    public int hashCode(){
+        return id;
+    }
 }

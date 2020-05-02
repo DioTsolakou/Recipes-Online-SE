@@ -26,12 +26,12 @@ class Ingredient {
     @Override
     public boolean equals(Object i) {
         if(!(i instanceof Ingredient)) return false;
-        return ( ( ((Ingredient)i).getName().equalsIgnoreCase(this.name) ) && ( (Ingredient)i).getCalories() == this.calories );
+        return ( (Ingredient)i).getName().equalsIgnoreCase(this.name);
     }
 
     @Override
     public int hashCode(){
-        return name.hashCode() * new Integer(calories).hashCode();
+        return name.hashCode();
     }
 
 }

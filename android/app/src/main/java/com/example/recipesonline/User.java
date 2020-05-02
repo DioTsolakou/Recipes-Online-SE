@@ -1,6 +1,7 @@
 package com.example.recipesonline;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 class User {
@@ -69,7 +70,23 @@ class User {
     void logoutUser() {}
 
     /* Searches the recipe by name */
-    List<Recipe> search(String name) {
+    HashSet<Recipe> search(String name, List<String> types, List<RecipeIngredient> ri){
+        HashSet<Recipe> r1 = new HashSet<>();
+        HashSet<Recipe> r2 = new HashSet<>();
+        HashSet<Recipe> r3 = new HashSet<>();
+        HashSet<Recipe> result = new HashSet<>();
+
+        if (name != null) r1.addAll(searchByName(name));
+        if (types.size() > 0) r2.addAll(searchByType(types));
+        if (ri.size() > 0) r3.addAll(searchByIngredients(ri));
+
+
+        result = r1.retainAll(r2);
+        return result;
+    }
+
+    /* Searches the recipe by name */
+    List<Recipe> searchByName(String name) {
         List<Recipe> result = new ArrayList<>();
         for (Recipe r : MainActivity.Recipes) {
             if (r.getName().toLowerCase().contains(name.toLowerCase())) result.add(r);
@@ -78,17 +95,23 @@ class User {
     }
 
     /* Searches the recipe by their types */
-    List<Recipe> searchByType(String typeName) {
+    List<Recipe> searchByType(List<String> types) {
         List<Recipe> result = new ArrayList<>();
         for (Recipe r : MainActivity.Recipes) {
-            for (String t : r.getTypes()) {
-                if (t.toLowerCase().contains(typeName.toLowerCase())) {
-                    result.add(r);
-                    break;
-                }
+            if (r.getTypes().containsAll(types)) {
+                result.add(r);
             }
         }
         return result;
     }
 
-}
+    /* Searches the recipe by calories */
+    List<Recipe> searchByIngredients(List<RecipeIngredient> ri) {
+        List<Recipe> result = new ArrayList<>();
+        for (Recipe r : MainActivity.Recipes) {
+            if (r.getIngredients().containsAll(ri))  result.add(r);
+        }
+        return result;
+    }
+
+    }
