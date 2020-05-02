@@ -1,6 +1,7 @@
 package com.example.recipesonline;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 class User {
@@ -68,20 +69,25 @@ class User {
     void logoutUser() {}
 
     /* Advanced search for user */
-    List<Recipe> search(String name, List<String> types, List<RecipeIngredient> ri) {
-        List<Recipe> r1 = new ArrayList<>();
-        List<Recipe> r2 = new ArrayList<>();
-        List<Recipe> r3 = new ArrayList<>();
-        List<Recipe> result = new ArrayList<>();
+    HashSet<Recipe> search(String name, List<String> types, List<RecipeIngredient> ri) {
+        HashSet<Recipe> r1 = new HashSet<>();
+        HashSet<Recipe> r2 = new HashSet<>();
+        HashSet<Recipe> r3 = new HashSet<>();
+        HashSet<Recipe> result = new HashSet<>();
 
         if (name != null) {
             r1.addAll(searchByName(name));
             result.addAll(r1);
         }
-        if (types.size() > 0) {
+        if (types.size() > 0  && name!=null) {
             r2.addAll(searchByType(types));
             result.retainAll(r2);
         }
+        else{
+            r2.addAll(searchByType(types));
+            result.addAll(r2);
+        }
+        
         if (ri.size() > 0) {
             r3.addAll(searchByIngredients(ri));
             result.retainAll(r3);
