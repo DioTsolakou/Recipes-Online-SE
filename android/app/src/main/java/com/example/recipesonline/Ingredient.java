@@ -1,7 +1,6 @@
 package com.example.recipesonline;
 
 class Ingredient {
-
     private String name;
     private int calories;
 
@@ -10,6 +9,7 @@ class Ingredient {
         this.name = name;
         this.calories = 0;
     }
+
     /* Constructor */
     Ingredient(String name, int calories) {
         this.name = name;
@@ -22,16 +22,15 @@ class Ingredient {
     void setName(String name) {this.name = name;}
     void setCalories(int calories) {this.calories = calories;}
 
-    /* Assume that if the name and the calories of the ingredients compared are the same the ingredients are the same*/
+    /* Assume that if the name of the compared ingredients are the same, then they are the same ingredient*/
     @Override
     public boolean equals(Object i) {
         if(!(i instanceof Ingredient)) return false;
-        return ( (Ingredient)i).getName().equalsIgnoreCase(this.name);
+        return ((Ingredient)i).getName().equalsIgnoreCase(this.name);
     }
 
     @Override
     public int hashCode(){
         return name.hashCode();
     }
-
 }

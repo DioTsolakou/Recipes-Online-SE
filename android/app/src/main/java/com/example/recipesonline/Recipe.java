@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 class Recipe {
-
     private static int count = 0;
     private int id;
     private RegisteredUser user;

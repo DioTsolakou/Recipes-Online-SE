@@ -1,7 +1,6 @@
 package com.example.recipesonline;
 
 class Evaluation {
-
     private static int count = 0;
     private int id;
     private RegisteredUser user;
@@ -28,5 +27,4 @@ class Evaluation {
     void setUser(RegisteredUser user) {this.user = user;}
     void setComments(String comments) {this.comments = comments;}
     void setRating(int rating) {this.rating = rating;}
-
 }

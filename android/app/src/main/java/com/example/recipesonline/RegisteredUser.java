@@ -5,7 +5,6 @@ import java.util.HashSet;
 import java.util.List;
 
 class RegisteredUser extends User {
-
     private String name;
     private String username;
     private String password;
@@ -35,6 +34,7 @@ class RegisteredUser extends User {
         MainActivity.Recipes.add(new Recipe(this, name, recipeIngredients, description, types));
     }
 
+    /* Calculates the calories of a recipe */
     double calcRecipeCalories(int recipeId) {
         for (Recipe r : MainActivity.Recipes) {
             if (r.getId() == recipeId)
@@ -52,7 +52,7 @@ class RegisteredUser extends User {
         return result;
     }
 
-    /* Searches a recipe with calories and by calling user's search(super) */
+    /* Advanced search of User plus calories since only a registered user can calculate the calories of a recipe */
     HashSet<Recipe> search(String name, List<String> types, List<RecipeIngredient> ri, double calories){
         HashSet<Recipe> result = new HashSet<>();
         result.addAll(super.search(name, types, ri));
@@ -60,7 +60,7 @@ class RegisteredUser extends User {
         return result;
     }
 
-        /* Evaluates a recipe */
+    /* Evaluates a recipe */
     void evaluate(int recipeId, String comments, int rating) {
         for (Recipe r : MainActivity.Recipes) {
             if (r.getId() == recipeId) {
@@ -78,5 +78,4 @@ class RegisteredUser extends User {
         }
         System.out.println("No recipe found");
     }
-
 }

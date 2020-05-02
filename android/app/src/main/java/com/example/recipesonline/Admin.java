@@ -40,5 +40,4 @@ class Admin extends User {
             }
         }
     }
-
 }

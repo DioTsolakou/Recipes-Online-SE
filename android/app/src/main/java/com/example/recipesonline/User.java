@@ -1,17 +1,15 @@
 package com.example.recipesonline;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
 class User {
-
     /* Empty constructor */
     User() {}
 
     /* Registers a user (as an Admin or Registered User) */
     void register(String name, String username, String password1, String password2) {
-        /* Searches if the username already exists (it must be unique ti be accepted) */
+        /* Searches if the username already exists (it must be unique tο be accepted) */
         for (RegisteredUser rU : MainActivity.RegisteredUsers)
         {
             if (rU.getUsername().equals(username))
@@ -69,7 +67,7 @@ class User {
     /* Is used for overriding */
     void logoutUser() {}
 
-    /* Searches the recipe by name */
+    /* Advanced search for user */
     List<Recipe> search(String name, List<String> types, List<RecipeIngredient> ri) {
         List<Recipe> r1 = new ArrayList<>();
         List<Recipe> r2 = new ArrayList<>();
@@ -112,7 +110,7 @@ class User {
         return result;
     }
 
-    /* Searches the recipe by calories */
+    /* Searches the recipe by their ingredients */
     List<Recipe> searchByIngredients(List<RecipeIngredient> ri) {
         List<Recipe> result = new ArrayList<>();
         for (Recipe r : MainActivity.Recipes) {
@@ -120,5 +118,4 @@ class User {
         }
         return result;
     }
-
-    }
+}

@@ -1,7 +1,6 @@
 package com.example.recipesonline;
 
 class RecipeIngredient {
-
     private Ingredient ingredient;
     private double amount;
     private String metricUnit;
@@ -33,5 +32,4 @@ class RecipeIngredient {
     void setIngredient(Ingredient ingredient) {this.ingredient = ingredient;}
     void setAmount(double amount) {this.amount = amount;}
     void setMetricUnit(String metricUnit) {this.metricUnit = metricUnit;}
-
 }

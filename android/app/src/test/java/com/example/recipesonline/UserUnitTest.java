@@ -4,13 +4,10 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
 public class UserUnitTest {
-
     private User u;
     private RegisteredUser ru;
     private Admin a;
@@ -21,7 +18,6 @@ public class UserUnitTest {
     /* Creates a recipe and the ingredients needed for it. Also creates a registeredUser. This data will be used by all the tests. */
     @Before
     public void createRecipeTest() {
-
         u = new User();
         u.register("userName", "userUsername", "userPswd", "userPswd");
         ru = (RegisteredUser) u.login("userUsername", "userPswd");
@@ -48,7 +44,6 @@ public class UserUnitTest {
         ru.createRecipe("recipeName", listRI, "recipeDesc", listRT);
         r = MainActivity.Recipes.get(0);
         Assert.assertEquals(1, MainActivity.Recipes.size());
-
     }
 
     /* Tests if a user can be registered successfully as an admin or registered User*/
@@ -60,7 +55,7 @@ public class UserUnitTest {
         Assert.assertEquals(2, MainActivity.Admins.size());
     }
 
-    /* Tests if an admin or a registered User can login and if not registered users aren't accepted*/
+    /* Tests if an admin or a registered user can login and if not registered users aren't accepted*/
     @Test
     public void loginTest() {
         RegisteredUser tempRU = (RegisteredUser) u.login("fakeUsername", "fakePswd");
@@ -102,21 +97,7 @@ public class UserUnitTest {
         Assert.assertEquals(1, ru.search("recipeName", listRT, listRI, 0 ).size());
     }
 
-    /*@Test
-    public void searchByCalories(){
-        List<RecipeIngredient> ri = new ArrayList<>();
-        Assert.assertEquals(1, ru.searchByCalories(4).size());
-    }
-
-    @Test
-    public void searchByIngredient() {
-        List<RecipeIngredient> ri = new ArrayList<>();
-        ri.add(new RecipeIngredient("ingr4", 5, "g"));
-        Assert.assertEquals(1, ru.searchByIngredients(listRI).size());
-        Assert.assertEquals(0, ru.searchByIngredients(ri).size());
-    }
-
-        /* Checks if the calories of a recipe are the expected */
+    /* Checks if the calories of a recipe are the expected */
     @Test
     public void calcRecipeCaloriesTest(){
         Assert.assertEquals(0, ru.calcRecipeCalories(1), 0.0);
@@ -152,7 +133,7 @@ public class UserUnitTest {
     }
 
 
-    /* Deletes all the data contained in lists and ids of recipes and ingredients when a test is completed */
+    /* Deletes all the data contained in lists and IDs of recipes and ingredients when a test is completed */
     @After
     public void clearAll() {
         MainActivity.Recipes.clear();
@@ -164,5 +145,4 @@ public class UserUnitTest {
         Recipe.clearCount();
         Evaluation.clearCount();
     }
-
 }
