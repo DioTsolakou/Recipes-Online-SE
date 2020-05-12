@@ -129,7 +129,7 @@ public class UserUnitTest {
         r.addIngredient(new RecipeIngredient("ingr1", 200, "ml"));
         Assert.assertEquals(sizeAfter, sizeBefore + 1);
         Assert.assertEquals(3, MainActivity.Ingredients.size());
-        
+
         a.updateIngredient("ingr3", "water", 1);
         Assert.assertEquals("water", ((Ingredient)(MainActivity.Ingredients.toArray()[0])).getName());
         Assert.assertEquals(1, ((Ingredient)(MainActivity.Ingredients.toArray()[0])).getCalories());
