@@ -6,4 +6,67 @@
     android:layout_height="match_parent"
     tools:context=".view.HomeActivity">
 
+    <TextView
+        android:id="@+id/logo"
+        android:layout_width="412dp"
+        android:layout_height="87dp"
+        android:background="@color/beige"
+        android:ems="1000"
+        android:gravity="center"
+        android:text="@string/recipes_online"
+        android:textColor="#000000"
+        android:textSize="27dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchTextView"
+        android:hint="Enter recipe name"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/searchTextView"
+        android:layout_width="136dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="28dp"
+        android:gravity="center"
+        android:text="Search"
+        android:textColor="#000000"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo" />
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="96dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="48dp"
+        android:text="CheckBox"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/advanced_search" />
+
+    <TextView
+        android:id="@+id/advanced_search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:text="Advanced Search"
+        android:textColor="#000000"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
