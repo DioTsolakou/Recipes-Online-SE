@@ -8,15 +8,14 @@ import java.util.HashSet;
 public class MainActivity extends AppCompatActivity {
 
     /* Declaration of the wanted lists */
-    static ArrayList<Recipe> Recipes = new ArrayList<Recipe>();
-    static HashSet<Ingredient> Ingredients = new HashSet<Ingredient>();
+    static HashSet<Recipe> Recipes = new HashSet<>();
+    static HashSet<Ingredient> Ingredients = new HashSet<>();
     static ArrayList<RegisteredUser> RegisteredUsers = new ArrayList<>();
     static ArrayList<RegisteredUser> LoggedInRegisteredUsers = new ArrayList<>();
     static ArrayList<Admin> Admins = new ArrayList<>();
     static ArrayList<Admin> LoggedInAdmins = new ArrayList<>();
 
     public static void main(String[] args) {
-
         /* Creating 3 administrators of the system*/
         Admins.add(new Admin("Dio Collaku", "admin1", "1234"));
         Admins.add(new Admin("Chara Gjergji", "admin2", "1234"));
