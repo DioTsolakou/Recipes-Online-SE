@@ -52,15 +52,19 @@ public class CreateRecipeActivity extends AppCompatActivity implements View.OnCl
                 row.addView(amount);
 
                 ImageButton imgBtn = new ImageButton(this);
-                imgBtn.setOnClickListener(this);
-                ++imgBtnCounter;
-                imgBtn.setId(imgBtnCounter);
+                imgBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        tblIngr.removeView(row);
+                    }
+                });
+                //++imgBtnCounter;
+                //imgBtn.setId(imgBtnCounter);
 
                 tblIngr.addView(row);
-                tblIngr.removeView(row);
             }
         }
-        if (v.getId() <= imgBtnCounter){}
+
     }
 
 
