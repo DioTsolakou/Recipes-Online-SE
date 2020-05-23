@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.CreateRecipe">
+    tools:context=".view.CreateRecipeActivity">
 
     <TextView
         android:id="@+id/logo"
@@ -40,7 +40,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="292dp"
+        android:layout_marginTop="300dp"
         android:text="Description"
         android:textColor="#000000"
         android:textSize="16dp"
@@ -88,5 +88,72 @@
         android:textSize="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logo" />
+
+    <ScrollView
+        android:id="@+id/scrollViewIngredients"
+        android:layout_width="258dp"
+        android:layout_height="95dp"
+        android:layout_marginStart="128dp"
+        android:layout_marginLeft="128dp"
+        android:layout_marginTop="36dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rcpName">
+
+        <TableLayout
+            android:id="@+id/tblIngredients"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <EditText
+                    android:id="@+id/etIngrName"
+                    android:layout_width="120dp"
+                    android:layout_height="40dp"
+                    android:ems="10"
+                    android:hint="Name"
+                    android:inputType="text"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/logo" />
+
+                <EditText
+                    android:id="@+id/etIngrAmount"
+                    android:layout_width="105dp"
+                    android:layout_height="40dp"
+                    android:ems="10"
+                    android:hint="Amount (gr)"
+                    android:inputType="number"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/logo" />
+
+                <ImageButton
+                    android:id="@+id/btnAddIngredient"
+                    android:layout_width="35dp"
+                    android:layout_height="40dp"
+                    android:src="@android:drawable/ic_menu_add"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/logo" />
+
+            </TableRow>
+
+        </TableLayout>
+
+    </ScrollView>
+
+    <!--
+    <ImageButton
+        android:id="@+id/btnAddIngredient"
+        android:layout_width="37dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="47dp"
+        android:src="@android:drawable/ic_menu_add"
+        app:layout_constraintStart_toEndOf="@+id/txtAddIngredient"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
+    -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

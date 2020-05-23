@@ -1,6 +1,6 @@
 package com.example.recipesonline;
 
-class Admin extends User {
+public class Admin extends User {
     private String name;
     private String username;
     private String password;
@@ -12,26 +12,26 @@ class Admin extends User {
         this.password = password;
     }
 
-    String getName() {return name;}
-    String getUsername() {return username;}
-    String getPassword() {return password;}
+    public String getName() {return name;}
+    public String getUsername() {return username;}
+    public String getPassword() {return password;}
 
-    void setName(String name) {this.name = name;}
-    void setUsername(String username) {this.username = username;}
-    void setPassword(String password) {this.password = password;}
+    public void setName(String name) {this.name = name;}
+    public void setUsername(String username) {this.username = username;}
+    public void setPassword(String password) {this.password = password;}
 
     @Override
-    void registerUser(String name, String username, String password) {
+    public void registerUser(String name, String username, String password) {
         MainActivity.Admins.add(new Admin(name, username, password));
     }
 
     @Override
-    void logoutUser() {
+    protected void logoutUser() {
         MainActivity.LoggedInAdmins.remove(this);
     }
 
     /* Update the existing ingredients with the appropriate name and calories */
-    void updateIngredient(String ingredientName, String correctName, int calories) {
+    public void updateIngredient(String ingredientName, String correctName, int calories) {
         for (Ingredient i : MainActivity.Ingredients) {
             if (ingredientName.equalsIgnoreCase(i.getName())) {
                 i.setName(correctName);

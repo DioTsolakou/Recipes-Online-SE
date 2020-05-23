@@ -1,6 +1,6 @@
 package com.example.recipesonline;
 
-class Evaluation {
+public class Evaluation {
     private static int count = 0;
     private int id;
     private RegisteredUser user;
@@ -8,23 +8,23 @@ class Evaluation {
     private int rating;
 
     /* Constructor */
-    Evaluation(RegisteredUser user, String comments, int rating) {
+    public Evaluation(RegisteredUser user, String comments, int rating) {
         this.id = ++count;
         this.user = user;
         this.comments = comments;
         this.rating = rating;
     }
 
-    int getCount() {return count;}
-    int getId() {return id;}
-    RegisteredUser getUser() {return user;}
-    String getComments() {return comments;}
-    int getRating() {return rating;}
+    public int getCount() {return count;}
+    public int getId() {return id;}
+    public RegisteredUser getUser() {return user;}
+    public String getComments() {return comments;}
+    public int getRating() {return rating;}
 
-    static void setCount(int c) {count = c;}
-    static void clearCount() {count = 0;}
-    void setId(int id) {this.id = id;}
-    void setUser(RegisteredUser user) {this.user = user;}
-    void setComments(String comments) {this.comments = comments;}
-    void setRating(int rating) {this.rating = rating;}
+    public static void setCount(int c) {count = c;}
+    public static void clearCount() {count = 0;}
+    public void setId(int id) {this.id = id;}
+    public void setUser(RegisteredUser user) {this.user = user;}
+    public void setComments(String comments) {this.comments = comments;}
+    public void setRating(int rating) {this.rating = rating;}
 }

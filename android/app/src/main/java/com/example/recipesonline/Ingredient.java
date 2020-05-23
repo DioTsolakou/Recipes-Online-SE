@@ -1,26 +1,26 @@
 package com.example.recipesonline;
 
-class Ingredient {
+public class Ingredient {
     private String name;
     private int calories;
 
     /* Constructor */
-    Ingredient(String name) {
+    public Ingredient(String name) {
         this.name = name;
         this.calories = 0;
     }
 
     /* Constructor */
-    Ingredient(String name, int calories) {
+    public Ingredient(String name, int calories) {
         this.name = name;
         this.calories = calories;
     }
 
-    String getName() {return name;}
-    int getCalories() {return calories;}
+    public String getName() {return name;}
+    public int getCalories() {return calories;}
 
-    void setName(String name) {this.name = name;}
-    void setCalories(int calories) {this.calories = calories;}
+    public void setName(String name) {this.name = name;}
+    public void setCalories(int calories) {this.calories = calories;}
 
     /* Assume that if the name of the compared ingredients are the same, then they are the same ingredient*/
     @Override
@@ -32,5 +32,12 @@ class Ingredient {
     @Override
     public int hashCode(){
         return name.hashCode();
+    }
+
+    @Override
+    public String toString () {
+        String s = name;
+        if (calories > 0) s += " (" + calories + " cal / 100 gr)";
+        return s;
     }
 }

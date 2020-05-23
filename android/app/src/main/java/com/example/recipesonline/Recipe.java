@@ -3,7 +3,7 @@ package com.example.recipesonline;
 import java.util.ArrayList;
 import java.util.List;
 
-class Recipe {
+public class Recipe {
     private static int count = 0;
     private int id;
     private RegisteredUser user;
@@ -14,7 +14,7 @@ class Recipe {
     private List<Evaluation> evaluationList;
 
     /* Constructor */
-    Recipe(RegisteredUser user, String name, List<RecipeIngredient> recipeIngredients, String description, List<String> types) {
+    public Recipe(RegisteredUser user, String name, List<RecipeIngredient> recipeIngredients, String description, List<String> types) {
         this.id = ++count;
         this.user = user;
         this.name = name;
@@ -24,9 +24,9 @@ class Recipe {
         evaluationList = new ArrayList<Evaluation>();
     }
 
-    static int getCount() {return count;}
-    int getId() {return id;}
-    RegisteredUser getUser() {return user;}
+    public static int getCount() {return count;}
+    public int getId() {return id;}
+    public RegisteredUser getUser() {return user;}
     String getName() {return name;}
     String getDescription() {return description;}
     List<RecipeIngredient> getIngredients() {return ingredients;}

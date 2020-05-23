@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
-class RegisteredUser extends User {
+public class RegisteredUser extends User {
     private String name;
     private String username;
     private String password;
@@ -16,16 +16,16 @@ class RegisteredUser extends User {
         this.password = password;
     }
 
-    String getName() {return name;}
-    String getUsername() {return username;}
-    String getPassword() {return password;}
+    public String getName() {return name;}
+    public String getUsername() {return username;}
+    public String getPassword() {return password;}
 
-    void setName(String name) {this.name = name;}
-    void setUsername(String username) {this.username = username;}
-    void setPassword(String password) {this.password = password;}
+    public void setName(String name) {this.name = name;}
+    public void setUsername(String username) {this.username = username;}
+    public void setPassword(String password) {this.password = password;}
 
     @Override
-    void logoutUser() {
+    protected void logoutUser() {
         MainActivity.LoggedInRegisteredUsers.remove(this);
     }
 
@@ -35,7 +35,7 @@ class RegisteredUser extends User {
     }
 
     /* Calculates the calories of a recipe */
-    double calcRecipeCalories(int recipeId) {
+    public double calcRecipeCalories(int recipeId) {
         for (Recipe r : MainActivity.Recipes) {
             if (r.getId() == recipeId)
                 return r.calcCalories();
@@ -44,7 +44,7 @@ class RegisteredUser extends User {
     }
 
     /* Searches the recipe by calories */
-    List<Recipe> searchByCalories(double calories) {
+    public List<Recipe> searchByCalories(double calories) {
         List<Recipe> result = new ArrayList<>();
         for (Recipe r : MainActivity.Recipes) {
             if (r.calcCalories() <= calories)  result.add(r);
@@ -53,7 +53,7 @@ class RegisteredUser extends User {
     }
 
     /* Advanced search of User plus calories since only a registered user can calculate the calories of a recipe */
-    HashSet<Recipe> search(String name, List<String> types, List<RecipeIngredient> ri, double calories){
+    public HashSet<Recipe> search(String name, List<String> types, List<RecipeIngredient> ri, double calories){
         HashSet<Recipe> result = new HashSet<>();
         result.addAll(super.search(name, types, ri));
         if (calories > 0) result.retainAll(searchByCalories(calories));
@@ -61,7 +61,7 @@ class RegisteredUser extends User {
     }
 
     /* Evaluates a recipe */
-    void evaluate(int recipeId, String comments, int rating) {
+    public void evaluate(int recipeId, String comments, int rating) {
         for (Recipe r : MainActivity.Recipes) {
             if (r.getId() == recipeId) {
                 for (Evaluation e : r.getEvaluationList())

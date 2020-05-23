@@ -8,12 +8,12 @@ import java.util.HashSet;
 public class MainActivity extends AppCompatActivity {
 
     /* Declaration of the wanted lists */
-    static HashSet<Recipe> Recipes = new HashSet<>();
-    static HashSet<Ingredient> Ingredients = new HashSet<>();
-    static ArrayList<RegisteredUser> RegisteredUsers = new ArrayList<>();
-    static ArrayList<RegisteredUser> LoggedInRegisteredUsers = new ArrayList<>();
-    static ArrayList<Admin> Admins = new ArrayList<>();
-    static ArrayList<Admin> LoggedInAdmins = new ArrayList<>();
+    public static HashSet<Recipe> Recipes = new HashSet<>();
+    public static HashSet<Ingredient> Ingredients = new HashSet<>();
+    public static ArrayList<RegisteredUser> RegisteredUsers = new ArrayList<>();
+    public static ArrayList<RegisteredUser> LoggedInRegisteredUsers = new ArrayList<>();
+    public static ArrayList<Admin> Admins = new ArrayList<>();
+    public static ArrayList<Admin> LoggedInAdmins = new ArrayList<>();
 
     public static void main(String[] args) {
         /* Creating 3 administrators of the system*/
