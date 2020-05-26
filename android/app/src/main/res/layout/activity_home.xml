@@ -50,7 +50,7 @@
         android:id="@+id/advanced_search"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="20dp"
         android:text="Advanced Search"
         android:textColor="#000000"
         android:textSize="20dp"
@@ -60,93 +60,169 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/search" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/criteriasView"
-        android:layout_width="424dp"
-        android:layout_height="433dp"
-        android:scrollbars="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+    <ScrollView
+        android:id="@+id/typesScrollView"
+        android:layout_width="258dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/advanced_search">
 
-        <CheckBox
-            android:id="@+id/cbMeat"
-            android:layout_width="133dp"
-            android:layout_height="29dp"
-            android:layout_marginStart="4dp"
-            android:layout_marginLeft="4dp"
-            android:layout_marginTop="24dp"
-            android:text="Meat"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/criteriasView" />
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-        <CheckBox
-            android:id="@+id/cbFish"
-            android:layout_width="133dp"
-            android:layout_height="29dp"
-            android:layout_marginStart="4dp"
-            android:layout_marginLeft="4dp"
-            android:layout_marginTop="60dp"
-            android:text="Fish"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/criteriasView" />
+            <TableRow>
 
-        <CheckBox
-            android:id="@+id/cbFasting"
-            android:layout_width="133dp"
-            android:layout_height="29dp"
-            android:layout_marginStart="4dp"
-            android:layout_marginLeft="4dp"
-            android:layout_marginTop="132dp"
-            android:text="Fasting"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/criteriasView" />
+                <CheckBox
+                    android:id="@+id/cblactoseFree"
+                    android:layout_width="129dp"
+                    android:layout_height="29dp"
+                    android:text="Lactose Free" />
 
-        <CheckBox
-            android:id="@+id/cbSweets"
-            android:layout_width="133dp"
-            android:layout_height="29dp"
-            android:layout_marginStart="4dp"
-            android:layout_marginLeft="4dp"
-            android:layout_marginTop="96dp"
-            android:text="Sweets"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/criteriasView" />
+                <CheckBox
+                    android:id="@+id/cbGlutenFree"
+                    android:layout_width="129dp"
+                    android:layout_height="29dp"
+                    android:text="Gluten Free" />
+            </TableRow>
 
-        <CheckBox
-            android:id="@+id/cbGlutenFree"
-            android:layout_width="133dp"
-            android:layout_height="29dp"
-            android:layout_marginStart="4dp"
-            android:layout_marginLeft="4dp"
-            android:layout_marginTop="168dp"
-            android:text="Gluten Free"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/criteriasView" />
+            <TableRow>
 
-        <CheckBox
-            android:id="@+id/cblactoseFree"
-            android:layout_width="133dp"
-            android:layout_height="29dp"
-            android:layout_marginStart="4dp"
-            android:layout_marginLeft="4dp"
-            android:layout_marginTop="204dp"
-            android:text="Lactose Free"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/criteriasView" />
+                <CheckBox
+                    android:id="@+id/cbSweets"
+                    android:layout_width="129dp"
+                    android:layout_height="29dp"
+                    android:text="Sweets" />
 
-    </androidx.recyclerview.widget.RecyclerView>
+                <CheckBox
+                    android:id="@+id/cbFasting"
+                    android:layout_width="129dp"
+                    android:layout_height="29dp"
+                    android:text="Fasting" />
+            </TableRow>
+
+            <TableRow>
+
+                <CheckBox
+                    android:id="@+id/cbFish"
+                    android:layout_width="129dp"
+                    android:layout_height="29dp"
+                    android:text="Fish" />
+
+                <CheckBox
+                    android:id="@+id/cbMeat"
+                    android:layout_width="129dp"
+                    android:layout_height="29dp"
+                    android:text="Meat" />
+            </TableRow>
+
+            <TableRow>
+
+                <CheckBox
+                    android:id="@+id/cbEaster"
+                    android:layout_width="129dp"
+                    android:layout_height="29dp"
+                    android:text="Easter" />
+
+                <CheckBox
+                    android:id="@+id/cbChristmas"
+                    android:layout_width="129dp"
+                    android:layout_height="29dp"
+                    android:text="Christmas" />
+            </TableRow>
+        </TableLayout>
+    </ScrollView>
+
+
+    <ScrollView
+        android:id="@+id/scrollViewIngredients"
+        android:layout_width="258dp"
+        android:layout_height="95dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ingrTextView">
+
+        <TableLayout
+            android:id="@+id/tblIngredients"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/logo">
+
+                <EditText
+                    android:id="@+id/etIngrName"
+                    android:layout_width="223dp"
+                    android:layout_height="40dp"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                    android:ems="10"
+                    android:hint="Ingredient Name"
+                    android:inputType="text" />
+
+                <ImageButton
+                    android:id="@+id/btnAddIngredient"
+                    android:layout_width="35dp"
+                    android:layout_height="40dp"
+                    android:src="@android:drawable/ic_menu_add" />
+
+            </TableRow>
+
+        </TableLayout>
+
+    </ScrollView>
 
     <TextView
-        android:id="@+id/txtIngredients"
-        android:layout_width="131dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginTop="240dp"
+        android:id="@+id/ingrTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:textColor="#000000"
         android:textSize="20dp"
         android:text="Ingredients"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/criteriasView" />
+        app:layout_constraintTop_toBottomOf="@+id/typesScrollView" />
+
+    <TextView
+        android:id="@+id/caloriesTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textColor="#000000"
+        android:textSize="20dp"
+        android:text="Calories"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollViewIngredients"/>
+
+    <EditText
+        android:id="@+id/caloriesName"
+        android:layout_width="223dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:hint="Enter the calories"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/caloriesTextView"/>
+
+    <ImageButton
+        android:id="@+id/btnSearch"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="20dp"
+        android:src="@android:drawable/ic_menu_search_material"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/caloriesName"
+        android:background="@color/beige"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

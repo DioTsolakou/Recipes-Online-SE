@@ -42,7 +42,7 @@ public class UserUnitTest {
         listRT.add(rt2);
 
         ru.createRecipe("recipeName", listRI, "recipeDesc", listRT);
-        r = MainActivity.Recipes.get(0);
+        r = (Recipe)(MainActivity.Recipes.toArray()[0]);
         Assert.assertEquals(1, MainActivity.Recipes.size());
     }
 
