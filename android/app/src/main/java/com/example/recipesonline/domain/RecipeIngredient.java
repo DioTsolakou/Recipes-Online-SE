@@ -1,4 +1,4 @@
-package com.example.recipesonline;
+package com.example.recipesonline.domain;
 
 public class RecipeIngredient {
     private Ingredient ingredient;

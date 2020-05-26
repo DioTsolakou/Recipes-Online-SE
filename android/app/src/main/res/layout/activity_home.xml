@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.HomeActivity">
+    tools:context=".view.Home.HomeActivity">
 
     <TextView
         android:id="@+id/logo"
@@ -66,73 +66,75 @@
         android:layout_height="433dp"
         android:scrollbars="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent">
 
-    <CheckBox
-        android:id="@+id/cbMeat"
-        android:layout_width="133dp"
-        android:layout_height="29dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginTop="24dp"
-        android:text="Meat"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/criteriasView" />
+        <CheckBox
+            android:id="@+id/cbMeat"
+            android:layout_width="133dp"
+            android:layout_height="29dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="24dp"
+            android:text="Meat"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/criteriasView" />
 
-    <CheckBox
-        android:id="@+id/cbFish"
-        android:layout_width="133dp"
-        android:layout_height="29dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginTop="60dp"
-        android:text="Fish"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/criteriasView" />
+        <CheckBox
+            android:id="@+id/cbFish"
+            android:layout_width="133dp"
+            android:layout_height="29dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="60dp"
+            android:text="Fish"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/criteriasView" />
 
-    <CheckBox
-        android:id="@+id/cbFasting"
-        android:layout_width="133dp"
-        android:layout_height="29dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginTop="132dp"
-        android:text="Fasting"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/criteriasView" />
+        <CheckBox
+            android:id="@+id/cbFasting"
+            android:layout_width="133dp"
+            android:layout_height="29dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="132dp"
+            android:text="Fasting"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/criteriasView" />
 
-    <CheckBox
-        android:id="@+id/cbSweets"
-        android:layout_width="133dp"
-        android:layout_height="29dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginTop="96dp"
-        android:text="Sweets"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/criteriasView" />
+        <CheckBox
+            android:id="@+id/cbSweets"
+            android:layout_width="133dp"
+            android:layout_height="29dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="96dp"
+            android:text="Sweets"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/criteriasView" />
 
-    <CheckBox
-        android:id="@+id/cbGlutenFree"
-        android:layout_width="133dp"
-        android:layout_height="29dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginTop="168dp"
-        android:text="Gluten Free"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/criteriasView" />
+        <CheckBox
+            android:id="@+id/cbGlutenFree"
+            android:layout_width="133dp"
+            android:layout_height="29dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="168dp"
+            android:text="Gluten Free"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/criteriasView" />
 
-    <CheckBox
-        android:id="@+id/cblactoseFree"
-        android:layout_width="133dp"
-        android:layout_height="29dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginTop="204dp"
-        android:text="Lactose Free"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/criteriasView" />
+        <CheckBox
+            android:id="@+id/cblactoseFree"
+            android:layout_width="133dp"
+            android:layout_height="29dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="204dp"
+            android:text="Lactose Free"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/criteriasView" />
+
+    </androidx.recyclerview.widget.RecyclerView>
 
     <TextView
         android:id="@+id/txtIngredients"
@@ -146,8 +148,5 @@
         android:text="Ingredients"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/criteriasView" />
-
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

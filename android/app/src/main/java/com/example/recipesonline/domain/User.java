@@ -1,4 +1,4 @@
-package com.example.recipesonline;
+package com.example.recipesonline.domain;
 
 import java.util.ArrayList;
 import java.util.HashSet;

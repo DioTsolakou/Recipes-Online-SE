@@ -1,14 +1,20 @@
-package com.example.recipesonline.view;
+package com.example.recipesonline.view.Recipe;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import com.example.recipesonline.R;
 
-public class RegisterActivity extends AppCompatActivity {
+public class RecipeActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+        setContentView(R.layout.activity_recipe);
+    }
+
+    @Override
+    protected void onPause()
+    {
+        super.onPause();
     }
 }

@@ -1,7 +1,6 @@
-package com.example.recipesonline.view;
+package com.example.recipesonline.view.CreateRecipe;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -33,7 +32,6 @@ public class CreateRecipeActivity extends AppCompatActivity implements View.OnCl
         etIngrAmount = findViewById(R.id.etIngrAmount);
         btnAddIngr = findViewById(R.id.btnAddIngredient);
         btnAddIngr.setOnClickListener(this);
-
     }
 
     @Override

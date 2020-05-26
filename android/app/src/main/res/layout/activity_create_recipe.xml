@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.CreateRecipeActivity">
+    tools:context=".view.CreateRecipe.CreateRecipeActivity">
 
     <TextView
         android:id="@+id/logo"
@@ -49,7 +49,7 @@
 
     <EditText
         android:id="@+id/rcpName"
-        android:layout_width="wrap_content"
+        android:layout_width="258dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="128dp"
         android:layout_marginLeft="128dp"
@@ -62,14 +62,14 @@
 
     <EditText
         android:id="@+id/rcpDescription"
-        android:layout_width="216dp"
+        android:layout_width="258dp"
         android:layout_height="163dp"
         android:layout_marginStart="128dp"
         android:layout_marginLeft="128dp"
         android:layout_marginTop="228dp"
         android:ems="10"
         android:hint="Enter recipe's description"
-        android:inputType="textPersonName"
+        android:inputType="textMultiLine"
         android:overScrollMode="always"
         android:scrollbarStyle="insideInset"
         android:scrollbars="vertical"
@@ -142,6 +142,103 @@
         </TableLayout>
 
     </ScrollView>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="108dp"
+        android:text="Types"
+        android:textColor="#000000"
+        android:textSize="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtDescription" />
+
+    <ScrollView
+        android:id="@+id/typesScrollView"
+        android:layout_width="258dp"
+        android:layout_height="89dp"
+        android:layout_marginStart="128dp"
+        android:layout_marginLeft="124dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rcpDescription">
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TableRow>
+                <CheckBox
+                    android:id="@+id/cblactoseFree"
+                    android:layout_width="129dp"
+                    android:layout_height="29dp"
+                    android:text="Lactose Free" />
+
+                <CheckBox
+                    android:id="@+id/cbGlutenFree"
+                    android:layout_width="129dp"
+                    android:layout_height="29dp"
+                    android:text="Gluten Free" />
+            </TableRow>
+
+            <TableRow>
+                <CheckBox
+                    android:id="@+id/cbSweets"
+                    android:layout_width="129dp"
+                    android:layout_height="29dp"
+                    android:text="Sweets" />
+
+                <CheckBox
+                    android:id="@+id/cbFasting"
+                    android:layout_width="129dp"
+                    android:layout_height="29dp"
+                    android:text="Fasting" />
+            </TableRow>
+
+            <TableRow>
+                <CheckBox
+                    android:id="@+id/cbFish"
+                    android:layout_width="129dp"
+                    android:layout_height="29dp"
+                    android:text="Fish" />
+
+                <CheckBox
+                    android:id="@+id/cbMeat"
+                    android:layout_width="129dp"
+                    android:layout_height="29dp"
+                    android:text="Meat" />
+            </TableRow>
+            <TableRow>
+                <CheckBox
+                    android:id="@+id/cbEaster"
+                    android:layout_width="129dp"
+                    android:layout_height="29dp"
+                    android:text="Easter" />
+
+                <CheckBox
+                    android:id="@+id/cbChristmas"
+                    android:layout_width="129dp"
+                    android:layout_height="29dp"
+                    android:text="Christmas" />
+            </TableRow>
+        </TableLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:text="Save"
+        android:background="@color/beige"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/typesScrollView" />
 
     <!--
     <ImageButton

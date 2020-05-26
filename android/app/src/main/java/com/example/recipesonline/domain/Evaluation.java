@@ -1,4 +1,4 @@
-package com.example.recipesonline;
+package com.example.recipesonline.domain;
 
 public class Evaluation {
     private static int count = 0;
