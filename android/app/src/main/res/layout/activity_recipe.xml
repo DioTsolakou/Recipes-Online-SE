@@ -103,7 +103,6 @@
                     android:layout_marginTop="10dp"
                     android:orientation="vertical">
 
-
                     <TableRow>
                         <TextView
                             android:id="@+id/txtTypes"
