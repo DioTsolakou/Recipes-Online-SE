@@ -1,5 +1,13 @@
 package com.example.recipesonline;
 
+import com.example.recipesonline.domain.Admin;
+import com.example.recipesonline.domain.Evaluation;
+import com.example.recipesonline.domain.Ingredient;
+import com.example.recipesonline.domain.Recipe;
+import com.example.recipesonline.domain.RecipeIngredient;
+import com.example.recipesonline.domain.RegisteredUser;
+import com.example.recipesonline.domain.User;
+
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
