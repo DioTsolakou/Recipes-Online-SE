@@ -8,13 +8,22 @@ import com.example.recipesonline.R;
 public class SearchResultsActivity extends AppCompatActivity implements SearchResultsView{
 
     private RecyclerView recyclerView;
+    private SearchResultsPresenter searchResultsPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_results);
 
+        searchResultsPresenter = new SearchResultsPresenter(this);
+
         recyclerView = findViewById(R.id.resultsRecycler);
+    }
+
+    @Override
+    protected void onPause()
+    {
+        super.onPause();
     }
 
     @Override

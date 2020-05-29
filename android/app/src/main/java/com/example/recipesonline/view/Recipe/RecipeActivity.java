@@ -11,11 +11,14 @@ public class RecipeActivity extends AppCompatActivity implements RecipeView{
     private TableLayout tblIngredients;
     private TableLayout tblTypes;
     private TableLayout tblComments;
+    private RecipePresenter recipePresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe);
+
+        recipePresenter = new RecipePresenter(this);
 
         tblIngredients = findViewById(R.id.tblIngredients);
         tblTypes = findViewById(R.id.tblTypes);

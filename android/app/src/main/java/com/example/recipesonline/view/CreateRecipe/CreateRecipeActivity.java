@@ -14,11 +14,11 @@ import com.example.recipesonline.R;
 public class CreateRecipeActivity extends AppCompatActivity implements View.OnClickListener, CreateRecipeView{
 
     private TableLayout tblIngr;
-
     private EditText etIngrName;
     private EditText etIngrAmount;
     private ImageButton btnAddIngr;
     private Button btnUpload;
+    private CreateRecipePresenter createRecipePresenter;
 
     private static int imgBtnCounter = 0;
 
@@ -27,8 +27,9 @@ public class CreateRecipeActivity extends AppCompatActivity implements View.OnCl
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_recipe);
 
-        tblIngr = findViewById(R.id.tblIngredients);
+        createRecipePresenter = new CreateRecipePresenter(this);
 
+        tblIngr = findViewById(R.id.tblIngredients);
         etIngrName = findViewById(R.id.etIngrName);
         etIngrAmount = findViewById(R.id.etIngrAmount);
         btnAddIngr = findViewById(R.id.btnAddIngredient);
@@ -68,7 +69,7 @@ public class CreateRecipeActivity extends AppCompatActivity implements View.OnCl
         }
         if (v == btnUpload)
         {
-
+            createRecipePresenter.onUpload();
         }
     }
 

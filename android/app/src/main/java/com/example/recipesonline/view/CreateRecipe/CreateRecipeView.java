@@ -10,5 +10,5 @@ public interface CreateRecipeView
 
     public int getEtIngrAmount();
 
-    public void setEtIngrAmount(String value);
+    public void setEtIngrAmount(int value);
 }

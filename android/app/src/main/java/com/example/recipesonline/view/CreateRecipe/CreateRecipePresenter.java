@@ -7,6 +7,10 @@ public class CreateRecipePresenter
     private CreateRecipeView view;
     private Recipe recipe;
 
+    public CreateRecipePresenter(CreateRecipeView view) {
+        this.view = view;
+    }
+
     public void onSaveRecipeIngredient()
     {
 
@@ -15,5 +19,10 @@ public class CreateRecipePresenter
     public void onSaveRecipeType()
     {
 
+    }
+
+    public void onUpload()
+    {
+        //call above methods
     }
 }
