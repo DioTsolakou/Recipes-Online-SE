@@ -3,21 +3,22 @@ package com.example.recipesonline.view.CreateRecipe;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-
 import com.example.recipesonline.R;
 
-public class CreateRecipeActivity extends AppCompatActivity implements View.OnClickListener {
+public class CreateRecipeActivity extends AppCompatActivity implements View.OnClickListener, CreateRecipeView{
 
     private TableLayout tblIngr;
 
     private EditText etIngrName;
     private EditText etIngrAmount;
     private ImageButton btnAddIngr;
+    private Button btnUpload;
 
     private static int imgBtnCounter = 0;
 
@@ -32,6 +33,9 @@ public class CreateRecipeActivity extends AppCompatActivity implements View.OnCl
         etIngrAmount = findViewById(R.id.etIngrAmount);
         btnAddIngr = findViewById(R.id.btnAddIngredient);
         btnAddIngr.setOnClickListener(this);
+
+        btnUpload = findViewById(R.id.saveButton);
+        btnUpload.setOnClickListener(this);
     }
 
     @Override
@@ -62,8 +66,25 @@ public class CreateRecipeActivity extends AppCompatActivity implements View.OnCl
                 tblIngr.addView(row);
             }
         }
+        if (v == btnUpload)
+        {
 
+        }
     }
 
+    public String getEtIngrName() {
+        return etIngrName.getText().toString().trim();
+    }
 
+    public void setEtIngrName(String value) {
+        etIngrName.setText(value);
+    }
+
+    public int getEtIngrAmount() {
+        return Integer.parseInt(etIngrAmount.getText().toString().trim());
+    }
+
+    public void setEtIngrAmount(int value) {
+        etIngrAmount.setText(value);
+    }
 }

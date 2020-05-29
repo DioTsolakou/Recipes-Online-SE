@@ -1,4 +1,19 @@
 package com.example.recipesonline.view.CreateRecipe;
 
-public class CreateRecipePresenter {
+import com.example.recipesonline.domain.Recipe;
+
+public class CreateRecipePresenter
+{
+    private CreateRecipeView view;
+    private Recipe recipe;
+
+    public void onSaveRecipeIngredient()
+    {
+
+    }
+
+    public void onSaveRecipeType()
+    {
+
+    }
 }

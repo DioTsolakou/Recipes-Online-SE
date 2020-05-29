@@ -1,4 +1,5 @@
 package com.example.recipesonline.view.SearchResults;
 
-public class SearchResultsPresenter { 
+public class SearchResultsPresenter {
+    private SearchResultsView view;
 }
