@@ -65,7 +65,7 @@ public class Recipe {
 
     @Override
     public boolean equals(Object r){
-        if(!(r instanceof Recipe)) return false;
+        if (!(r instanceof Recipe)) return false;
         return ((Recipe)r).getId() == this.id;
     }
 

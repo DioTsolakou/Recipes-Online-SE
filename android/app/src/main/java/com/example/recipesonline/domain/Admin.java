@@ -22,7 +22,7 @@ public class Admin extends User {
 
     @Override
     public void registerUser(String name, String username, String password) {
-        MainActivity.Admins.add(new Admin(name, username, password));
+        Utilities.getAdmins().add(new Admin(name, username, password));
     }
 
     @Override
@@ -32,7 +32,7 @@ public class Admin extends User {
 
     /* Update the existing ingredients with the appropriate name and calories */
     public void updateIngredient(String ingredientName, String correctName, int calories) {
-        for (Ingredient i : MainActivity.Ingredients) {
+        for (Ingredient i : Utilities.getIngredients()) {
             if (ingredientName.equalsIgnoreCase(i.getName())) {
                 i.setName(correctName);
                 i.setCalories(calories);

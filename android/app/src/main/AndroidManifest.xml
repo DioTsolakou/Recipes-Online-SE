@@ -10,6 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".view.Main.MainActivity"></activity>
+        <activity android:name=".view.UpdateIngredient.UpdateIngredientActivity"/>
         <activity android:name=".view.SearchResults.SearchResultsActivity" />
         <activity android:name=".view.CreateRecipe.CreateRecipeActivity" />
         <activity android:name=".view.Register.RegisterActivity" />

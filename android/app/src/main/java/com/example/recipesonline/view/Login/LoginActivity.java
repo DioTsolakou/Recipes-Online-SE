@@ -49,22 +49,16 @@ public class LoginActivity extends AppCompatActivity implements LoginView, View.
         }
     }
 
-    @Override
     public String getUsername() {
         return etUsername.getText().toString().trim();
     }
-
-    @Override
     public void setUsername(String value) {
         etUsername.setText(value);
     }
 
-    @Override
     public String getPassword() {
         return etPassword.getText().toString().trim();
     }
-
-    @Override
     public void setPassword(String value) {
         etPassword.setText(value);
     }

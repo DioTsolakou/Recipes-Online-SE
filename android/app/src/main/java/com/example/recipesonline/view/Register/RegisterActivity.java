@@ -45,43 +45,30 @@ public class RegisterActivity extends AppCompatActivity implements RegisterView,
         }
     }
 
-
-    @Override
     public String getNamePlaintext() {
         return etName.getText().toString().trim();
     }
-
-    @Override
     public void setNamePlaintext(String value) {
         etName.setText(value);
     }
 
-    @Override
     public String getUsername() {
         return etUsername.getText().toString().trim();
     }
-
-    @Override
     public void setUsername(String value) {
         etUsername.setText(value);
     }
 
-    @Override
     public String getPassword() {
         return etPassword.getText().toString().trim();
     }
-
-    @Override
     public void setPassword(String value) {
         etPassword.setText(value);
     }
 
-    @Override
     public String getPasswordConfirmation() {
         return etPasswordConfirmation.getText().toString().trim();
     }
-
-    @Override
     public void setPasswordConfirmation(String value) {
         etPasswordConfirmation.setText(value);
     }

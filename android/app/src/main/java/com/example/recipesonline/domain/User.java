@@ -39,7 +39,7 @@ public class User {
 
     /* Allows to registered Users and Admins to login */
     public User login(String username, String password) {
-        for (Admin a : MainActivity.Admins) {
+        for (Admin a : Utilities.getAdmins()) {
             if (a.getUsername().equals(username) && a.getPassword().equals(password)) {
                 System.out.println("Welcome, " + username + "!");
                 MainActivity.LoggedInAdmins.add(a);
@@ -47,7 +47,7 @@ public class User {
             }
         }
 
-        for (RegisteredUser ru : MainActivity.RegisteredUsers) {
+        for (RegisteredUser ru : Utilities.getRegisteredUsers()) {
             if (ru.getUsername().equals(username) && ru.getPassword().equals(password)) {
                 System.out.println("Welcome, " + username + "!");
                 MainActivity.LoggedInRegisteredUsers.add(ru);
