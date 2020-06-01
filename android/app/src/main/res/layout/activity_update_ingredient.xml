@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.UpdateIngredient.UpdateIngredientActivity">
+
+    <TextView
+        android:id="@+id/logo"
+        android:layout_width="412dp"
+        android:layout_height="87dp"
+        android:background="@color/beige"
+        android:ems="1000"
+        android:gravity="center"
+        android:text="@string/update_ingredient"
+        android:textColor="#000000"
+        android:textSize="27dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TableLayout
+        android:id="@+id/existingIngredientsTable"
+        android:layout_width="match_parent"
+        android:layout_height="550dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/logo"
+        app:layout_constraintVertical_bias="0.0"
+        android:layout_marginTop="5dp">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent">
+
+            <EditText
+                android:id="@+id/etIngrName"
+                android:layout_width="265dp"
+                android:layout_height="40dp"
+                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                android:ems="10"
+                android:hint="Name"
+                android:inputType="text"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/logo" />
+
+            <EditText
+                android:id="@+id/etIngrAmount"
+                android:layout_width="146dp"
+                android:layout_height="40dp"
+                android:ems="10"
+                android:hint="Amount (gr)"
+                android:inputType="number"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/logo" />
+        </TableRow>
+
+    </TableLayout>
+
+    <Button
+        android:id="@+id/saveChanges"
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:text="Save Changes"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/existingIngredientsTable"
+        android:background="@color/beige"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
