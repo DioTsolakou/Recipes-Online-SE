@@ -3,6 +3,7 @@ package com.example.recipesonline.view.CreateRecipe;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -13,10 +14,17 @@ import com.example.recipesonline.R;
 
 public class CreateRecipeActivity extends AppCompatActivity implements View.OnClickListener, CreateRecipeView{
 
+    private EditText rcpName;
+
+    private EditText rcpDescription;
+
     private TableLayout tblIngr;
     private EditText etIngrName;
     private EditText etIngrAmount;
     private ImageButton btnAddIngr;
+
+    private TableLayout tblTypes;
+
     private Button btnUpload;
     private CreateRecipePresenter createRecipePresenter;
 
@@ -29,9 +37,15 @@ public class CreateRecipeActivity extends AppCompatActivity implements View.OnCl
 
         createRecipePresenter = new CreateRecipePresenter(this);
 
+        rcpName = findViewById(R.id.rcpName);
+
         tblIngr = findViewById(R.id.tblIngredients);
         etIngrName = findViewById(R.id.etIngrName);
         etIngrAmount = findViewById(R.id.etIngrAmount);
+        rcpDescription = findViewById(R.id.rcpDescription);
+
+        tblTypes = findViewById(R.id.tblIngredients);
+
         btnAddIngr = findViewById(R.id.btnAddIngredient);
         btnAddIngr.setOnClickListener(this);
 
@@ -43,7 +57,6 @@ public class CreateRecipeActivity extends AppCompatActivity implements View.OnCl
     public void onClick (View v) {
         if (v == btnAddIngr) {
             if (etIngrName.getText().length() > 0 && etIngrAmount.getText().length() > 0) {
-
                 TableRow row = new TableRow(this);
 
                 TextView name = new TextView(this);
@@ -58,11 +71,11 @@ public class CreateRecipeActivity extends AppCompatActivity implements View.OnCl
                 imgBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        tblIngr.removeView(row);
+                        View row = (View)v.getParent();
+                        ViewGroup container = ((ViewGroup)row.getParent());
+                        container.removeView(row);
                     }
                 });
-                //++imgBtnCounter;
-                //imgBtn.setId(imgBtnCounter);
 
                 tblIngr.addView(row);
             }
@@ -73,19 +86,21 @@ public class CreateRecipeActivity extends AppCompatActivity implements View.OnCl
         }
     }
 
-    public String getEtIngrName() {
-        return etIngrName.getText().toString().trim();
-    }
+    public String getEtRecipeName() {return rcpName.getText().toString().trim();}
+    public void setEtRecipeName(String value) {rcpName.setText(value);}
 
-    public void setEtIngrName(String value) {
-        etIngrName.setText(value);
-    }
+    public TableLayout getTblIngredients() {return tblIngr;}
+    public void setTblIngredients(TableLayout value) {tblIngr = value;}
 
-    public int getEtIngrAmount() {
-        return Integer.parseInt(etIngrAmount.getText().toString().trim());
-    }
+    public String getEtIngrName() {return etIngrName.getText().toString().trim();}
+    public void setEtIngrName(String value) {etIngrName.setText(value);}
 
-    public void setEtIngrAmount(int value) {
-        etIngrAmount.setText(value);
-    }
+    public int getEtIngrAmount() {return Integer.parseInt(etIngrAmount.getText().toString().trim());}
+    public void setEtIngrAmount(int value) {etIngrAmount.setText(value);}
+
+    public String getEtDescription() {return rcpDescription.getText().toString().trim();}
+    public void setEtDescription(String value) {rcpDescription.setText(value);}
+
+    public TableLayout getTblTypes() {return tblTypes;}
+    public void setTblTypes(TableLayout value) {tblTypes = value;}
 }

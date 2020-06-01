@@ -54,7 +54,6 @@ public class HomeActivity extends AppCompatActivity implements HomeView, View.On
     public String getSearchName() {
         return etSearchName.getText().toString().trim();
     }
-
     @Override
     public void setSearchName(String value) {
         etSearchName.setText(value);
@@ -64,7 +63,6 @@ public class HomeActivity extends AppCompatActivity implements HomeView, View.On
     public String getIngredientName() {
         return etIngrName.getText().toString().trim();
     }
-
     @Override
     public void setIngredientName(String value) {
         etIngrName.setText(value);
@@ -74,7 +72,6 @@ public class HomeActivity extends AppCompatActivity implements HomeView, View.On
     public int getCalories() {
         return Integer.parseInt(etCalories.getText().toString().trim());
     }
-
     @Override
     public void setCalories(int value) {
         etCalories.setText(value);
