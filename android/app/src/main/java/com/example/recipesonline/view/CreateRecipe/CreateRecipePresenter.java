@@ -22,14 +22,13 @@ public class CreateRecipePresenter
     private String description;
     private ArrayList<String> types;
 
-    public CreateRecipePresenter(CreateRecipeView view) {
-        this.view = view;
-    }
+    public CreateRecipePresenter(CreateRecipeView view) { this.view = view; }
 
     private void saveRecipeIngredients()
     {
         recipeIngredients = new ArrayList<>();
-        for (int i = 0; i < view.getTblIngredients().getChildCount(); i++){
+        if(view.getTblIngredients().getChildCount()<= 1) return;
+        for (int i = 1; i < view.getTblIngredients().getChildCount(); i++){
             TableRow row = (TableRow)view.getTblIngredients().getChildAt(i);
             String name = ((EditText)(row.getChildAt(0))).getText().toString();
             double amount = Double.parseDouble(((EditText)(row.getChildAt(1))).getText().toString());

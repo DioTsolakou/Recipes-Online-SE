@@ -27,7 +27,7 @@ public class Admin extends User {
 
     @Override
     protected void logoutUser() {
-        MainActivity.LoggedInAdmins.remove(this);
+        Utilities.getLoggedInAdmins().remove(this);
     }
 
     /* Update the existing ingredients with the appropriate name and calories */

@@ -26,17 +26,17 @@ public class RegisteredUser extends User {
 
     @Override
     protected void logoutUser() {
-        MainActivity.LoggedInRegisteredUsers.remove(this);
+        Utilities.getLoggedInUsers().remove(this);
     }
 
     /* Creates a recipe */
     void createRecipe(String name, List<RecipeIngredient> recipeIngredients, String description, List<String> types) {
-        MainActivity.Recipes.add(new Recipe(this, name, recipeIngredients, description, types));
+        Utilities.getRecipes().add(new Recipe(this, name, recipeIngredients, description, types));
     }
 
     /* Calculates the calories of a recipe */
     public double calcRecipeCalories(int recipeId) {
-        for (Recipe r : MainActivity.Recipes) {
+        for (Recipe r : Utilities.getRecipes()) {
             if (r.getId() == recipeId)
                 return r.calcCalories();
         }
@@ -46,14 +46,14 @@ public class RegisteredUser extends User {
     /* Searches the recipe by calories */
     public List<Recipe> searchByCalories(double calories) {
         List<Recipe> result = new ArrayList<>();
-        for (Recipe r : MainActivity.Recipes) {
+        for (Recipe r : Utilities.getRecipes()) {
             if (r.calcCalories() <= calories)  result.add(r);
         }
         return result;
     }
 
     /* Advanced search of User plus calories since only a registered user can calculate the calories of a recipe */
-    public HashSet<Recipe> search(String name, List<String> types, List<RecipeIngredient> ri, double calories){
+    public HashSet<Recipe> search(String name, List<String> types, List<Ingredient> ri, double calories){
         HashSet<Recipe> result = new HashSet<>();
         result.addAll(super.search(name, types, ri));
         if (calories > 0) result.retainAll(searchByCalories(calories));
@@ -62,13 +62,13 @@ public class RegisteredUser extends User {
 
     /* Evaluates a recipe */
     public void evaluate(int recipeId, String comments, int rating) {
-        for (Recipe r : MainActivity.Recipes) {
+        for (Recipe r : Utilities.getRecipes()) {
             if (r.getId() == recipeId) {
                 for (Evaluation e : r.getEvaluationList())
                 {
                     if (this.getUsername().equals(e.getUser().getUsername()))
                     {
-                        System.out.println("You have already evaluated this recipe.");
+                        //System.out.println("You have already evaluated this recipe.");
                         return;
                     }
                 }
@@ -76,6 +76,6 @@ public class RegisteredUser extends User {
                 return;
             }
         }
-        System.out.println("No recipe found");
+        //System.out.println("No recipe found");
     }
 }

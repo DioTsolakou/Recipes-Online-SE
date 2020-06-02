@@ -6,8 +6,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TableLayout;
+import android.widget.TableRow;
+import android.widget.TextView;
 
 import com.example.recipesonline.R;
+import com.example.recipesonline.domain.Ingredient;
+import com.example.recipesonline.domain.Utilities;
 
 public class UpdateIngredientActivity extends AppCompatActivity implements UpdateIngredientView, View.OnClickListener {
 
@@ -16,6 +20,7 @@ public class UpdateIngredientActivity extends AppCompatActivity implements Updat
     private TableLayout existingIngredients;
     private EditText ingredientName;
     private EditText ingredientAmount;
+    private TextView txtIngredient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,9 +33,28 @@ public class UpdateIngredientActivity extends AppCompatActivity implements Updat
 
         ingredientName = findViewById(R.id.etIngrName);
         ingredientAmount = findViewById(R.id.etIngrAmount);
+        txtIngredient = findViewById(R.id.txtIngrName);
 
         saveBtn = findViewById(R.id.saveChanges);
         saveBtn.setOnClickListener(this);
+
+        for(Ingredient i: Utilities.getIngredients()){
+            TableRow row = new TableRow(this);
+
+            TextView preName = new TextView(this);
+            preName.setText(i.getName());
+            row.addView(preName);
+
+            EditText name = new EditText(this);
+            name.setText(i.getName());
+            row.addView(name);
+
+            EditText calories = new EditText(this);
+            calories.setText(i.getCalories());
+            row.addView(calories);
+
+            existingIngredients.addView(row);
+        }
     }
 
     @Override
@@ -42,7 +66,10 @@ public class UpdateIngredientActivity extends AppCompatActivity implements Updat
     @Override
     public void onClick(View v) {
         if (v == saveBtn) {
-            //call the appropriate method for editing/updating ingredients
+            updateIngredientPresenter.onSaveChanges();
         }
     }
+
+    public TableLayout getIngredients(){ return existingIngredients; }
+    public void setIngredients(TableLayout value){ existingIngredients = value; }
 }
