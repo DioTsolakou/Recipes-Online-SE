@@ -1,6 +1,7 @@
 package com.example.recipesonline.view.SearchResults;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import com.example.recipesonline.R;
@@ -18,6 +19,11 @@ public class SearchResultsActivity extends AppCompatActivity implements SearchRe
         searchResultsPresenter = new SearchResultsPresenter(this);
 
         recyclerView = findViewById(R.id.resultsRecycler);
+
+        SearchAdapter adapter = new SearchAdapter(myListData);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(adapter);
     }
 
     @Override
