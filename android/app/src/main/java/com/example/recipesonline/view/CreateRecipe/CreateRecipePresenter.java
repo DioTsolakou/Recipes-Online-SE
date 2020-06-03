@@ -35,8 +35,8 @@ public class CreateRecipePresenter
         if(view.getTblIngredients().getChildCount()<= 1) return;
         for (int i = 1; i < view.getTblIngredients().getChildCount(); i++) {
             TableRow row = (TableRow)view.getTblIngredients().getChildAt(i);
-            String name = ((EditText)(row.getChildAt(0))).getText().toString();
-            double amount = Double.parseDouble(((EditText)(row.getChildAt(1))).getText().toString());
+            String name = ((TextView)(row.getChildAt(0))).getText().toString();
+            double amount = Double.parseDouble(((TextView)(row.getChildAt(1))).getText().toString());
             recipeIngredients.add(new RecipeIngredient(name, amount));
         }
     }
