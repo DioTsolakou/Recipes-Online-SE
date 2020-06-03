@@ -1,7 +1,11 @@
 package com.example.recipesonline.view.Register;
 
+import android.content.Context;
+import android.content.Intent;
+
 import com.example.recipesonline.domain.Admin;
 import com.example.recipesonline.domain.Utilities;
+import com.example.recipesonline.view.Home.HomeActivity;
 
 public class RegisterPresenter {
 
@@ -23,5 +27,8 @@ public class RegisterPresenter {
         password2 = view.getPasswordConfirmation();
 
         Utilities.getUser().register(name, username, password1, password2);
+
+        Intent intent = new Intent((Context) view, HomeActivity.class);
+        ((Context) view).startActivity(intent);
     }
 }

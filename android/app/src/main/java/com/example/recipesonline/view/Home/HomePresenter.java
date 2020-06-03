@@ -1,15 +1,17 @@
 package com.example.recipesonline.view.Home;
 
+import android.content.Context;
+import android.content.Intent;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TableRow;
-
-import com.example.recipesonline.domain.Admin;
 import com.example.recipesonline.domain.Ingredient;
-import com.example.recipesonline.domain.RecipeIngredient;
+import com.example.recipesonline.domain.Recipe;
 import com.example.recipesonline.domain.RegisteredUser;
 import com.example.recipesonline.domain.Utilities;
+import com.example.recipesonline.view.SearchResults.SearchResultsActivity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -21,6 +23,7 @@ public class HomePresenter
     private List<String> types;
     private List<Ingredient> ingredients;
     private int calories;
+    private HashSet<Recipe> searchResults;
 
     public HomePresenter(HomeView view) {
         this.view = view;
@@ -46,8 +49,23 @@ public class HomePresenter
 
         if(Utilities.getUser() instanceof RegisteredUser){
             calories = view.getCalories();
-            ((RegisteredUser)Utilities.getUser()).search(recipeName, types, ingredients, calories);
+            searchResults.addAll(((RegisteredUser)Utilities.getUser()).search(recipeName, types, ingredients, calories));
+
+            Intent intent = new Intent((Context) view, SearchResultsActivity.class);
+            intent.putExtra("Search_Results", searchResults);
+            ((Context) view).startActivity(intent);
         }
-        else Utilities.getUser().search(recipeName, types, ingredients);
+        else{
+            searchResults.addAll(Utilities.getUser().search(recipeName, types, ingredients));
+
+            Intent intent = new Intent((Context) view, SearchResultsActivity.class);
+            intent.putExtra("Search_Results", searchResults);
+            ((Context) view).startActivity(intent);
+        }
+    }
+
+    public void onLogout()
+    {
+        Utilities.getUser().logout();
     }
 }

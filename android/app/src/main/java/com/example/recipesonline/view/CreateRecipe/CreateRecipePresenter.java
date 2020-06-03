@@ -1,5 +1,7 @@
 package com.example.recipesonline.view.CreateRecipe;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -10,7 +12,10 @@ import com.example.recipesonline.domain.Recipe;
 import com.example.recipesonline.domain.RecipeIngredient;
 import com.example.recipesonline.domain.RegisteredUser;
 import com.example.recipesonline.domain.Utilities;
+import com.example.recipesonline.view.Home.HomeActivity;
+import com.example.recipesonline.view.Recipe.RecipeActivity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class CreateRecipePresenter
@@ -52,6 +57,8 @@ public class CreateRecipePresenter
         description = view.getEtDescription();
         saveRecipeTypes();
         recipe = new Recipe((RegisteredUser)Utilities.getUser(), name, recipeIngredients, description, types);
-        Utilities.getRecipes().add(recipe);
+
+        Intent intent = new Intent((Context) view, HomeActivity.class);
+        ((Context) view).startActivity(intent);
     }
 }

@@ -30,7 +30,7 @@ public class RegisteredUser extends User {
     }
 
     /* Creates a recipe */
-    void createRecipe(String name, List<RecipeIngredient> recipeIngredients, String description, List<String> types) {
+    public void createRecipe(String name, List<RecipeIngredient> recipeIngredients, String description, List<String> types) {
         Utilities.getRecipes().add(new Recipe(this, name, recipeIngredients, description, types));
     }
 

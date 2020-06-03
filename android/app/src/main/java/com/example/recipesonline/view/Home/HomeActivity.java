@@ -1,16 +1,22 @@
 package com.example.recipesonline.view.Home;
 
 import androidx.appcompat.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-
 import com.example.recipesonline.R;
+import com.example.recipesonline.domain.Admin;
+import com.example.recipesonline.domain.Utilities;
+import com.example.recipesonline.view.CreateRecipe.CreateRecipeActivity;
+import com.example.recipesonline.view.Login.LoginActivity;
+import com.example.recipesonline.view.UpdateIngredient.UpdateIngredientActivity;
 
 public class HomeActivity extends AppCompatActivity implements HomeView, View.OnClickListener {
 
@@ -19,6 +25,10 @@ public class HomeActivity extends AppCompatActivity implements HomeView, View.On
     private EditText etCalories;
     private ImageButton searchBtn;
     private ImageButton addIngrBtn;
+    private Button updateIngrBtn;
+    private Button loginBtn;
+    private Button logoutBtn;
+    private Button createYourRecipeBtn;
     private HomePresenter homePresenter;
     private TableLayout tblIngredients;
     private TableLayout tblTypes;
@@ -40,6 +50,30 @@ public class HomeActivity extends AppCompatActivity implements HomeView, View.On
 
         addIngrBtn = findViewById(R.id.btnAddIngredient);
         addIngrBtn.setOnClickListener(this);
+
+        updateIngrBtn = findViewById(R.id.updateIngrButton);
+        updateIngrBtn.setOnClickListener(this);
+
+        loginBtn = findViewById(R.id.loginButton);
+        loginBtn.setOnClickListener(this);
+
+        logoutBtn = findViewById(R.id.loginButton);
+        logoutBtn.setOnClickListener(this);
+
+        createYourRecipeBtn = findViewById(R.id.createYourRecipe);
+        createYourRecipeBtn.setOnClickListener(this);
+
+        if (!(Utilities.getUser() instanceof Admin)) {
+            updateIngrBtn.setVisibility(View.INVISIBLE);
+        }
+
+        if (Utilities.getLoggedInUsers().contains(Utilities.getUser()) || Utilities.getLoggedInAdmins().contains(Utilities.getUser()))
+        {
+            loginBtn.setVisibility(View.INVISIBLE);
+        }
+        else {
+            etCalories.setVisibility(View.GONE);
+        }
     }
 
     @Override
@@ -73,6 +107,21 @@ public class HomeActivity extends AppCompatActivity implements HomeView, View.On
         }
         if (v == searchBtn) {
             homePresenter.onSearch();
+        }
+        if (v == updateIngrBtn) {
+            Intent intent = new Intent(HomeActivity.this, UpdateIngredientActivity.class);
+            startActivity(intent);
+        }
+        if (v == loginBtn) {
+            Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
+            startActivity(intent);
+        }
+        if (v == logoutBtn) {
+            homePresenter.onLogout();
+        }
+        if (v == createYourRecipeBtn) {
+            Intent intent = new Intent(HomeActivity.this, CreateRecipeActivity.class);
+            startActivity(intent);
         }
     }
 

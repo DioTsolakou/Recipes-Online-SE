@@ -62,6 +62,8 @@ public class User {
     /* Allows to logged in users to logout */
     public void logout() {
         logoutUser();
+        User newUser = new User();
+        Utilities.setUser(newUser);
         //System.out.println("You have logged out.");
     }
 

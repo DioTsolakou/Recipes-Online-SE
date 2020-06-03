@@ -1,5 +1,7 @@
 package com.example.recipesonline.view.SearchResults;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,12 +11,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.recipesonline.R;
 import com.example.recipesonline.domain.Recipe;
+import com.example.recipesonline.view.Recipe.RecipeActivity;
 
-public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder> implements View.OnClickListener{
+import java.io.Serializable;
+
+public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder>{
 
     private Recipe[] recipes;
 
-    // RecyclerView recyclerView;
+    RecyclerView recyclerView;
     public SearchAdapter(Recipe[] listRecipes) {
         this.recipes = listRecipes;
     }
@@ -27,17 +32,23 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
     }
 
     @Override
-    public void onClick(View view) {}
-
-    @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         final Recipe rcp = recipes[position];
         holder.textName.setText(recipes[position].getName());
         holder.textRating.setText(String.valueOf(recipes[position].calcEvaluation()));
         holder.textCreator.setText(recipes[position].getUser().getName());
-        holder.constraintLayout.setOnClickListener(this);
-    }
+        holder.constraintLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int itemPosition = recyclerView.getChildLayoutPosition(v);
+                Recipe item = recipes[itemPosition];
 
+                Intent intent = new Intent(v.getContext(), RecipeActivity.class);
+                intent.putExtra("Recipe", (Serializable) item);
+                v.getContext().startActivity(intent);
+            }
+        });
+    }
 
     @Override
     public int getItemCount() {
@@ -57,6 +68,4 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
             constraintLayout = (ConstraintLayout) itemView.findViewById(R.id.constraintLayout);
         }
     }
-
-
 }

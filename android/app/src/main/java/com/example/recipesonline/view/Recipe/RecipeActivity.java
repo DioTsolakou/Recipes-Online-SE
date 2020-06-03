@@ -1,6 +1,8 @@
 package com.example.recipesonline.view.Recipe;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -30,6 +32,7 @@ public class RecipeActivity extends AppCompatActivity implements RecipeView, Vie
     private EditText etRating;
     private Button btnSaveComment;
     private TableLayout tblComments;
+    private String recipeToBeShown;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +40,10 @@ public class RecipeActivity extends AppCompatActivity implements RecipeView, Vie
         setContentView(R.layout.activity_recipe);
 
         recipePresenter = new RecipePresenter(this);
-        recipe = getIntent().getStringExtra("Recipe");
+
+        Intent intent = getIntent();
+
+        recipe = (Recipe) intent.getSerializableExtra("Recipe");
 
         if(recipe.getName() != null)
             logo.setText(recipe.getName());
@@ -68,14 +74,18 @@ public class RecipeActivity extends AppCompatActivity implements RecipeView, Vie
         description = findViewById(R.id.rcpDescription);
         description.setText(recipe.getDescription());
 
+
         for (Evaluation e: recipe.getEvaluationList()) {
             TextView tv = new TextView(this);
-            tv.setText(e.getUser() + " (" + e.getRating()+ ")\n" +
-                    e.getComments());
+
+            recipeToBeShown = e.getUser() + " (" + e.getRating()+ ")\n" + e.getComments();
+
+            tv.setText(recipeToBeShown);
             TableRow row = new TableRow(this);
             row.addView(tv);
             tblComments.addView(row);
         }
+
         etComment = findViewById(R.id.editTxtComment);
         etRating = findViewById(R.id.editTxtRating);
         btnSaveComment = findViewById(R.id.btnSaveComment);
