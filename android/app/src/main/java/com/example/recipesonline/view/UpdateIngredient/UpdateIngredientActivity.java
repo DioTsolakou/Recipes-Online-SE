@@ -68,12 +68,26 @@ public class UpdateIngredientActivity extends AppCompatActivity implements Updat
     }
 
     @Override
+    protected void onResume()
+    {
+        super.onResume();
+        if (Utilities.getUser() != null) {
+            if ((Utilities.getLoggedInUsers().contains(Utilities.getUser()) || Utilities.getLoggedInAdmins().contains(Utilities.getUser())))
+                logoutBtn.setVisibility(View.VISIBLE);
+            else
+                logoutBtn.setVisibility(View.INVISIBLE);
+        }
+    }
+
+    @Override
     public void onClick(View v) {
         if (v == saveBtn) {
             updateIngredientPresenter.onSaveChanges();
         }
         if (v == logoutBtn) {
             updateIngredientPresenter.onLogout();
+            finish();
+            startActivity(getIntent());
         }
     }
 

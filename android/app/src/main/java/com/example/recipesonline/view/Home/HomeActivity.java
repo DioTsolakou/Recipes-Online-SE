@@ -63,7 +63,18 @@ public class HomeActivity extends AppCompatActivity implements HomeView, View.On
 
         createYourRecipeBtn = findViewById(R.id.createYourRecipe);
         createYourRecipeBtn.setOnClickListener(this);
+    }
 
+    @Override
+    protected void onPause()
+    {
+        super.onPause();
+    }
+
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
         if (!(Utilities.getUser() instanceof Admin)) {
             updateIngrBtn.setVisibility(View.INVISIBLE);
         }
@@ -72,8 +83,11 @@ public class HomeActivity extends AppCompatActivity implements HomeView, View.On
             if ((Utilities.getLoggedInUsers().contains(Utilities.getUser()) || Utilities.getLoggedInAdmins().contains(Utilities.getUser())))
             {
                 loginBtn.setVisibility(View.INVISIBLE);
+                logoutBtn.setVisibility(View.VISIBLE);
             }
             else {
+                loginBtn.setVisibility(View.VISIBLE);
+                logoutBtn.setVisibility(View.INVISIBLE);
                 etCalories.setVisibility(View.GONE);
             }
         }
@@ -81,12 +95,6 @@ public class HomeActivity extends AppCompatActivity implements HomeView, View.On
         if(!(Utilities.getUser() instanceof RegisteredUser)){
             createYourRecipeBtn.setVisibility(View.INVISIBLE);
         }
-    }
-
-    @Override
-    protected void onPause()
-    {
-        super.onPause();
     }
 
     @Override
@@ -125,6 +133,8 @@ public class HomeActivity extends AppCompatActivity implements HomeView, View.On
         }
         if (v == logoutBtn) {
             homePresenter.onLogout();
+            finish();
+            startActivity(getIntent());
         }
         if (v == createYourRecipeBtn) {
             Intent intent = new Intent(HomeActivity.this, CreateRecipeActivity.class);

@@ -15,6 +15,7 @@ import com.example.recipesonline.R;
 import com.example.recipesonline.domain.Evaluation;
 import com.example.recipesonline.domain.Recipe;
 import com.example.recipesonline.domain.RecipeIngredient;
+import com.example.recipesonline.domain.Utilities;
 import com.example.recipesonline.view.Home.HomeActivity;
 import com.example.recipesonline.view.Login.LoginActivity;
 
@@ -110,6 +111,20 @@ public class RecipeActivity extends AppCompatActivity implements RecipeView, Vie
     }
 
     @Override
+    protected void onResume()
+    {
+        super.onResume();
+        if ((Utilities.getLoggedInUsers().contains(Utilities.getUser())) || Utilities.getLoggedInAdmins().contains(Utilities.getUser())){
+            loginBtn.setVisibility(View.INVISIBLE);
+            logoutBtn.setVisibility(View.VISIBLE);
+        }
+        else {
+            loginBtn.setVisibility(View.VISIBLE);
+            logoutBtn.setVisibility(View.INVISIBLE);
+        }
+    }
+
+    @Override
     public void onClick(View v) {
         if (v == btnSaveComment) {
             recipePresenter.onSaveComment();
@@ -120,6 +135,8 @@ public class RecipeActivity extends AppCompatActivity implements RecipeView, Vie
         }
         if (v == logoutBtn) {
             recipePresenter.onLogout();
+            finish();
+            startActivity(getIntent());
         }
     }
 

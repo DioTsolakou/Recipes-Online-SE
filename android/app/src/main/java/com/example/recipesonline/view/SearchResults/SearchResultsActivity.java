@@ -15,7 +15,10 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.example.recipesonline.R;
+import com.example.recipesonline.domain.Admin;
 import com.example.recipesonline.domain.Recipe;
+import com.example.recipesonline.domain.RegisteredUser;
+import com.example.recipesonline.domain.Utilities;
 import com.example.recipesonline.view.CreateRecipe.CreateRecipeActivity;
 import com.example.recipesonline.view.Home.HomeActivity;
 import com.example.recipesonline.view.Login.LoginActivity;
@@ -67,6 +70,8 @@ public class SearchResultsActivity extends AppCompatActivity implements SearchRe
         }
         if (v == logoutBtn) {
             searchResultsPresenter.onLogout();
+            finish();
+            startActivity(getIntent());
         }
     }
 
@@ -74,6 +79,23 @@ public class SearchResultsActivity extends AppCompatActivity implements SearchRe
     protected void onPause()
     {
         super.onPause();
+    }
+
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
+        if (Utilities.getUser() != null) {
+            if ((Utilities.getLoggedInUsers().contains(Utilities.getUser()) || Utilities.getLoggedInAdmins().contains(Utilities.getUser())))
+            {
+                loginBtn.setVisibility(View.INVISIBLE);
+                logoutBtn.setVisibility(View.VISIBLE);
+            }
+            else {
+                loginBtn.setVisibility(View.VISIBLE);
+                logoutBtn.setVisibility(View.INVISIBLE);
+            }
+        }
     }
 
     @Override
