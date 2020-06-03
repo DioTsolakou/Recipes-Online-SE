@@ -19,6 +19,8 @@ public class Utilities {
         recipes = new ArrayList<>();
         registeredUsers = new ArrayList<>();
         admins = new ArrayList<>();
+        loggedInUsers = new ArrayList<>();
+        loggedInAdmins = new ArrayList<>();
     }
 
     public static User getUser() {
