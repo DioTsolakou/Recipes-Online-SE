@@ -23,8 +23,8 @@ public class HomeActivity extends AppCompatActivity implements HomeView, View.On
     private EditText etSearchName;
     private EditText etIngrName;
     private EditText etCalories;
-    private ImageButton searchBtn;
-    private ImageButton addIngrBtn;
+    private Button searchBtn;
+    private Button addIngrBtn;
     private Button updateIngrBtn;
     private Button loginBtn;
     private Button logoutBtn;

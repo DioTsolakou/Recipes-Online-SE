@@ -160,19 +160,19 @@
 
                 <EditText
                     android:id="@+id/etIngrName"
-                    android:layout_width="223dp"
+                    android:layout_width="217dp"
                     android:layout_height="40dp"
                     android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
                     android:ems="10"
                     android:hint="Ingredient Name"
                     android:inputType="text" />
 
-                <ImageButton
+                <Button
                     android:id="@+id/btnAddIngredient"
-                    android:layout_width="35dp"
+                    android:layout_width="41dp"
                     android:layout_height="40dp"
-                    android:src="@android:drawable/ic_menu_add"
-                    android:background="@color/beige"/>
+                    android:background="@color/beige"
+                    android:text="Add"/>
 
             </TableRow>
 
@@ -216,13 +216,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/caloriesTextView" />
 
-    <ImageButton
+    <Button
         android:id="@+id/btnSearch"
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:layout_marginTop="20dp"
         android:background="@color/beige"
-        android:src="@drawable/ic_menu_search_material"
+        android:text="Search"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/calories" />

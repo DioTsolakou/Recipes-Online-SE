@@ -21,7 +21,7 @@ public class CreateRecipeActivity extends AppCompatActivity implements View.OnCl
     private TableLayout tblIngr;
     private EditText etIngrName;
     private EditText etIngrAmount;
-    private ImageButton btnAddIngr;
+    private Button btnAddIngr;
 
     private TableLayout tblTypes;
 
