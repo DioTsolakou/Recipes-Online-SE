@@ -67,7 +67,7 @@ public class HomeActivity extends AppCompatActivity implements HomeView, View.On
             updateIngrBtn.setVisibility(View.INVISIBLE);
         }
 
-        if (Utilities.getLoggedInUsers().contains(Utilities.getUser()) || Utilities.getLoggedInAdmins().contains(Utilities.getUser()))
+        if ((Utilities.getLoggedInUsers().contains(Utilities.getUser()) || Utilities.getLoggedInAdmins().contains(Utilities.getUser()) ) && Utilities.getUser() != null)
         {
             loginBtn.setVisibility(View.INVISIBLE);
         }
