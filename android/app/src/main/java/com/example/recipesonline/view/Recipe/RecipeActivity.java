@@ -15,6 +15,8 @@ import com.example.recipesonline.R;
 import com.example.recipesonline.domain.Evaluation;
 import com.example.recipesonline.domain.Recipe;
 import com.example.recipesonline.domain.RecipeIngredient;
+import com.example.recipesonline.view.Home.HomeActivity;
+import com.example.recipesonline.view.Login.LoginActivity;
 
 import org.w3c.dom.Text;
 
@@ -33,6 +35,8 @@ public class RecipeActivity extends AppCompatActivity implements RecipeView, Vie
     private Button btnSaveComment;
     private TableLayout tblComments;
     private String recipeToBeShown;
+    private Button loginBtn;
+    private Button logoutBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +48,12 @@ public class RecipeActivity extends AppCompatActivity implements RecipeView, Vie
         Intent intent = getIntent();
 
         recipe = (Recipe) intent.getSerializableExtra("Recipe");
+
+        loginBtn = findViewById(R.id.loginButton);
+        loginBtn.setOnClickListener(this);
+
+        logoutBtn = findViewById(R.id.logoutButton);
+        logoutBtn.setOnClickListener(this);
 
         if(recipe.getName() != null)
             logo.setText(recipe.getName());
@@ -103,6 +113,13 @@ public class RecipeActivity extends AppCompatActivity implements RecipeView, Vie
     public void onClick(View v) {
         if (v == btnSaveComment) {
             recipePresenter.onSaveComment();
+        }
+        if (v == loginBtn) {
+            Intent intent = new Intent(RecipeActivity.this, LoginActivity.class);
+            startActivity(intent);
+        }
+        if (v == logoutBtn) {
+            recipePresenter.onLogout();
         }
     }
 

@@ -13,7 +13,7 @@
         android:background="@color/beige"
         android:ems="1000"
         android:gravity="center"
-        android:text="Παστίτσιο"
+        android:text="RecipeName"
         android:textColor="#000000"
         android:textSize="27dp"
         app:layout_constraintEnd_toEndOf="parent"

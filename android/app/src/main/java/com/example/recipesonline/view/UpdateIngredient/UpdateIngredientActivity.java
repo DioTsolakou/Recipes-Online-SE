@@ -16,6 +16,7 @@ import com.example.recipesonline.domain.Utilities;
 public class UpdateIngredientActivity extends AppCompatActivity implements UpdateIngredientView, View.OnClickListener {
 
     private UpdateIngredientPresenter updateIngredientPresenter;
+    private Button logoutBtn;
     private Button saveBtn;
     private TableLayout existingIngredients;
     private EditText ingredientName;
@@ -28,6 +29,9 @@ public class UpdateIngredientActivity extends AppCompatActivity implements Updat
         setContentView(R.layout.activity_update_ingredient);
 
         updateIngredientPresenter = new UpdateIngredientPresenter(this);
+
+        logoutBtn = findViewById(R.id.logoutButton);
+        logoutBtn.setOnClickListener(this);
 
         existingIngredients = findViewById(R.id.existingIngredientsTable);
 
@@ -67,6 +71,9 @@ public class UpdateIngredientActivity extends AppCompatActivity implements Updat
     public void onClick(View v) {
         if (v == saveBtn) {
             updateIngredientPresenter.onSaveChanges();
+        }
+        if (v == logoutBtn) {
+            updateIngredientPresenter.onLogout();
         }
     }
 

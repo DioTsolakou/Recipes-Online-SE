@@ -18,4 +18,9 @@ public class RecipePresenter {
         recipe.addEvaluation(new Evaluation((RegisteredUser)Utilities.getUser(), view.getComment(), view.getRating()));
     }
 
+    public void onLogout()
+    {
+        Utilities.getUser().logout();
+    }
+
 }

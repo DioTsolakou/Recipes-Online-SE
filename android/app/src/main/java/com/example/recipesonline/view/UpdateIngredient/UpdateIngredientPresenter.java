@@ -31,4 +31,9 @@ public class UpdateIngredientPresenter {
         Intent intent = new Intent((Context) view, HomeActivity.class);
         ((Context) view).startActivity(intent);
     }
+
+    public void onLogout()
+    {
+        Utilities.getUser().logout();
+    }
 }

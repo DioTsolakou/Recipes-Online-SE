@@ -13,6 +13,7 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import com.example.recipesonline.R;
 import com.example.recipesonline.domain.Admin;
+import com.example.recipesonline.domain.RegisteredUser;
 import com.example.recipesonline.domain.Utilities;
 import com.example.recipesonline.view.CreateRecipe.CreateRecipeActivity;
 import com.example.recipesonline.view.Login.LoginActivity;
@@ -57,7 +58,7 @@ public class HomeActivity extends AppCompatActivity implements HomeView, View.On
         loginBtn = findViewById(R.id.loginButton);
         loginBtn.setOnClickListener(this);
 
-        logoutBtn = findViewById(R.id.loginButton);
+        logoutBtn = findViewById(R.id.logoutButton);
         logoutBtn.setOnClickListener(this);
 
         createYourRecipeBtn = findViewById(R.id.createYourRecipe);
@@ -75,6 +76,10 @@ public class HomeActivity extends AppCompatActivity implements HomeView, View.On
             else {
                 etCalories.setVisibility(View.GONE);
             }
+        }
+
+        if(!(Utilities.getUser() instanceof RegisteredUser)){
+            createYourRecipeBtn.setVisibility(View.INVISIBLE);
         }
     }
 
