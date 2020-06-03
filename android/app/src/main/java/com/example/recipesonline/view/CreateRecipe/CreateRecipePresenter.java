@@ -33,7 +33,7 @@ public class CreateRecipePresenter
     {
         recipeIngredients = new ArrayList<>();
         if(view.getTblIngredients().getChildCount()<= 1) return;
-        for (int i = 1; i < view.getTblIngredients().getChildCount(); i++){
+        for (int i = 1; i < view.getTblIngredients().getChildCount(); i++) {
             TableRow row = (TableRow)view.getTblIngredients().getChildAt(i);
             String name = ((EditText)(row.getChildAt(0))).getText().toString();
             double amount = Double.parseDouble(((EditText)(row.getChildAt(1))).getText().toString());
@@ -44,7 +44,7 @@ public class CreateRecipePresenter
     private void saveRecipeTypes()
     {
         types = new ArrayList<>();
-        for (int i = 0; i < view.getTblTypes().getChildCount(); i++){
+        for (int i = 0; i < view.getTblTypes().getChildCount(); i++) {
             CheckBox cb = (CheckBox)view.getTblTypes().getChildAt(i);
             if (cb.isChecked()) types.add(cb.getText().toString());
         }

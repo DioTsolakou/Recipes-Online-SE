@@ -15,6 +15,7 @@ import com.example.recipesonline.R;
 import com.example.recipesonline.domain.Evaluation;
 import com.example.recipesonline.domain.Recipe;
 import com.example.recipesonline.domain.RecipeIngredient;
+import com.example.recipesonline.domain.RegisteredUser;
 import com.example.recipesonline.domain.Utilities;
 import com.example.recipesonline.view.Home.HomeActivity;
 import com.example.recipesonline.view.Login.LoginActivity;
@@ -33,6 +34,7 @@ public class RecipeActivity extends AppCompatActivity implements RecipeView, Vie
     private TextView description;
     private EditText etComment;
     private EditText etRating;
+    private TextView txtCalories;
     private Button btnSaveComment;
     private TableLayout tblComments;
     private String recipeToBeShown;
@@ -99,6 +101,8 @@ public class RecipeActivity extends AppCompatActivity implements RecipeView, Vie
 
         etComment = findViewById(R.id.editTxtComment);
         etRating = findViewById(R.id.editTxtRating);
+        txtCalories = findViewById(R.id.txtCalories);
+        txtCalories.setText(String.valueOf(((RegisteredUser)Utilities.getUser()).calcRecipeCalories(recipe.getId())));
         btnSaveComment = findViewById(R.id.btnSaveComment);
         btnSaveComment.setOnClickListener(this);
         tblComments = findViewById(R.id.tblComments);

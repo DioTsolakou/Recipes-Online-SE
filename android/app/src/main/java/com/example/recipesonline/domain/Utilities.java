@@ -21,6 +21,7 @@ public class Utilities {
         admins = new ArrayList<>();
         loggedInUsers = new ArrayList<>();
         loggedInAdmins = new ArrayList<>();
+        admins.add(new Admin("admin", "admin", "admin"));
     }
 
     public static User getUser() {

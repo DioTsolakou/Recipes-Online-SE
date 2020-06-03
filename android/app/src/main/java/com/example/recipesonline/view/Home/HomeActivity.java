@@ -23,6 +23,7 @@ public class HomeActivity extends AppCompatActivity implements HomeView, View.On
 
     private EditText etSearchName;
     private EditText etIngrName;
+    private TextView txtCalories;
     private EditText etCalories;
     private Button searchBtn;
     private Button addIngrBtn;
@@ -41,7 +42,9 @@ public class HomeActivity extends AppCompatActivity implements HomeView, View.On
 
         etSearchName = findViewById(R.id.search);
         etIngrName = findViewById(R.id.etIngrName);
+
         etCalories = findViewById(R.id.calories);
+        txtCalories = findViewById(R.id.caloriesTextView);
         tblIngredients = findViewById(R.id.tblIngredients);
 
         homePresenter = new HomePresenter(this);
@@ -89,6 +92,7 @@ public class HomeActivity extends AppCompatActivity implements HomeView, View.On
                 loginBtn.setVisibility(View.VISIBLE);
                 logoutBtn.setVisibility(View.INVISIBLE);
                 etCalories.setVisibility(View.GONE);
+                txtCalories.setVisibility(View.GONE);
             }
         }
 

@@ -34,7 +34,7 @@ public class HomePresenter
     public void onSearch()
     {
         recipeName = view.getSearchName();
-        if(view.getTableIngredients().getChildCount()>= 1){
+        if(view.getTableIngredients().getChildCount()>= 1) {
             for (int i = 1; i < view.getTableIngredients().getChildCount(); i++) {
                 TableRow row = (TableRow) view.getTableIngredients().getChildAt(i);
                 String name = ((EditText) (row.getChildAt(0))).getText().toString();
@@ -42,7 +42,7 @@ public class HomePresenter
             }
         }
 
-        for (int i = 0; i < view.getTableTypes().getChildCount(); i++){
+        for (int i = 1; i < view.getTableTypes().getChildCount(); i++) {
             CheckBox cb = (CheckBox)view.getTableTypes().getChildAt(i);
             if (cb.isChecked()) types.add(cb.getText().toString());
         }
